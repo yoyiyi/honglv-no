@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentTransaction;
 import com.yoyiyi.honglv.R;
 import com.yoyiyi.honglv.base.BaseActivity;
 import com.yoyiyi.honglv.ui.fragment.another.rank.RankFragment;
+import com.yoyiyi.honglv.ui.fragment.another.recent.RecentFragment;
 import com.yoyiyi.honglv.ui.fragment.another.week.WeekFragment;
 
 /**
@@ -36,6 +37,9 @@ public class AnotherActivity extends BaseActivity {
                 break;
             case "WeekFragment":
                 mFragment = WeekFragment.newInstance(mType);
+                break;
+            case "RecentFragment":
+                mFragment = RecentFragment.newInstance(mType);
                 break;
         }
         final FragmentTransaction trans =

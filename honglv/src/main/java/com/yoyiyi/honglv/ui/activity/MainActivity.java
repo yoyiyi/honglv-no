@@ -150,7 +150,9 @@ public class MainActivity extends BaseActivity
         } else if (id == R.id.nav_hot) {
             TDevice.startActivity(MainActivity.this, HotActivity.class);
         } else if (id == R.id.nav_new) {
-
+            Intent intent = new Intent(this, AnotherActivity.class);
+            intent.putExtra("type", "RecentFragment");
+            startActivity(intent);
         } else if (id == R.id.nav_rank) {
             Intent intent = new Intent(this, AnotherActivity.class);
             intent.putExtra("type", "RankFragment");

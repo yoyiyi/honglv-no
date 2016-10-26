@@ -5,6 +5,7 @@ import com.yoyiyi.honglv.bean.Carousel;
 import com.yoyiyi.honglv.bean.HotNew;
 import com.yoyiyi.honglv.bean.News;
 import com.yoyiyi.honglv.bean.Ranking;
+import com.yoyiyi.honglv.bean.RecentUpdate;
 import com.yoyiyi.honglv.bean.Recommend;
 import com.yoyiyi.honglv.bean.TopicDetail;
 import com.yoyiyi.honglv.bean.TopicList;
@@ -68,4 +69,7 @@ public interface HttpService {
 
     @GET("news")
     Observable<News> getNews(@Query("page") Integer page);
+
+    @GET("recentUpdate")
+    Observable<List<RecentUpdate>> getRecentUpdate();
 }

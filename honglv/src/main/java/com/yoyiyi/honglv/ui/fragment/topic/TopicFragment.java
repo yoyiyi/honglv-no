@@ -46,6 +46,7 @@ public class TopicFragment extends BaseFragment implements SwipeRefreshLayout.On
     private TopicListAdapter mAdapter;
     private static int mTotalCount;//总共
     private SpannableString mSpannableString;
+    private View view;
 
     @Override
     protected int getLayoutId() {
@@ -63,6 +64,8 @@ public class TopicFragment extends BaseFragment implements SwipeRefreshLayout.On
     @Override
     protected void initWidget(View root) {
         super.initWidget(root);
+        view = View.inflate(getActivity(), R.layout.item_bangumi_header, null);
+        mTotal = (TextView) view.findViewById(R.id.total);
         initSwiperReshLayoutColor();
 
     }
@@ -119,8 +122,7 @@ public class TopicFragment extends BaseFragment implements SwipeRefreshLayout.On
 
     //添加头部
     private void addHeader() {
-        View view = View.inflate(getActivity(), R.layout.item_bangumi_header, null);
-        mTotal = (TextView) view.findViewById(R.id.total);
+
         mAdapter.addHeaderView(view);
         //添加动画
         mAdapter.openLoadAnimation(new BaseAnimator());
@@ -196,14 +198,13 @@ public class TopicFragment extends BaseFragment implements SwipeRefreshLayout.On
         mEmpty.setEmptyIv(R.drawable.ic_empty_error);
         mEmpty.setOnItemClickLisener(() -> {
             setReshing(true);
-            ///doHttpConnection();
-            //onre
             requestData();
         });
         TDevice.showMessage(mRecycler, "数据加载失败,请重新加载或者检查网络是否链接");
     }
 
     public void clearData() {
+        mTotal.setText("");
         mTopicList.clear();
         mTotalCount = 0;
     }
