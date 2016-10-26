@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.yoyiyi.honglv"
+    >
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <application
+        android:name=".base.BaseApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_me"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/BaseAppTheme">
+        <meta-data
+            android:name="com.yoyiyi.honglv.ui.widget.GlideConfiguration"
+            android:value="GlideModule"/>
+        <!-- AppStart-->
+        <activity
+            android:name=".AppStart"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/ColorTranslucentTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <!--首页-->
+        <activity
+            android:name=".ui.activity.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MainActivityColorTranslucentTheme"/>
+        <activity android:name=".ui.activity.BrowserActivity"/>
+        <activity
+            android:name=".ui.activity.TopicActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activity.another.HotActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activity.another.AnotherActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activity.HotMoreActivity"
+            android:screenOrientation="portrait"/>
+
+    </application>
+
+</manifest>

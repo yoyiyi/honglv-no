@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <group
+        android:id="@+id/nav_top"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_nav_home"
+            android:title="@string/ic_menu_home"/>
+        <item
+            android:id="@+id/nav_rank"
+            android:icon="@drawable/ic_home_rank"
+            android:title="@string/ic_menu_rank"/>
+        <item
+            android:id="@+id/nav_update"
+            android:icon="@drawable/ic_nav_update"
+            android:title="@string/ic_menu_update"/>
+
+    </group>
+    <group
+        android:id="@+id/menu_center"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_down"
+            android:icon="@drawable/ic_down"
+            android:title="@string/ic_menu_down"/>
+        <item
+            android:id="@+id/nav_hot"
+            android:icon="@drawable/ic_nav_hot"
+            android:title="@string/ic_menu_hot"/>
+
+        <item
+            android:id="@+id/nav_new"
+            android:icon="@drawable/ic_nav_new"
+            android:title="@string/ic_menu_current"/>
+
+    </group>
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_theme"
+            android:icon="@drawable/ic_nav_theme"
+            android:title="@string/ic_menu_theme"/>
+        <item
+            android:id="@+id/nav_setting"
+            android:icon="@drawable/ic_nav_help"
+            android:title="@string/ic_menu_setting"/>
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/ic_nav_about"
+            android:title="@string/ic_menu_aboout"/>
+    </group>
+</menu>

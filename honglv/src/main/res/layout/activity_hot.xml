@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+    >
+
+    <include layout="@layout/layout_toolbar"/>
+
+    <com.flyco.tablayout.SegmentTabLayout
+        android:id="@+id/stl_bangumi"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/space_10"
+        android:paddingLeft="@dimen/space_10"
+        android:paddingRight="@dimen/space_10"
+        app:tl_bar_color="@color/white"
+        app:tl_indicator_color="@color/pink"
+        app:tl_indicator_margin_bottom="@dimen/space_2"
+        app:tl_indicator_margin_left="@dimen/space_2"
+        app:tl_indicator_margin_right="@dimen/space_2"
+        app:tl_indicator_margin_top="@dimen/space_2"
+        app:tl_tab_space_equal="true"
+        app:tl_textBold="true"
+        app:tl_textsize="@dimen/text_size_14">
+    </com.flyco.tablayout.SegmentTabLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_hot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <!--   <android.support.v4.view.ViewPager
+           android:id="@+id/vp"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">-->
+
+    <!--  </android.support.v4.view.ViewPager>-->
+    <net.qiujuer.genius.ui.widget.Loading
+        android:id="@+id/c_loading"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center_horizontal"
+        app:gBackgroundLineSize="2dp"
+        app:gProgressStyle="circle"/>
+
+    <com.yoyiyi.honglv.ui.widget.empty.EmptyLayout
+        android:id="@+id/empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
+</LinearLayout>

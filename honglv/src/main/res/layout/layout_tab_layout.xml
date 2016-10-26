@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+       xmlns:app="http://schemas.android.com/apk/res-auto"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+
+    <com.flyco.tablayout.SlidingTabLayout
+        android:id="@+id/sta"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_40"
+        android:layout_gravity="center_horizontal"
+        app:tl_bar_color="@color/white"
+        app:tl_indicator_color="@color/pink"
+        app:tl_indicator_margin_bottom="@dimen/space_2"
+        app:tl_indicator_margin_left="@dimen/space_2"
+        app:tl_indicator_margin_right="@dimen/space_2"
+        app:tl_indicator_margin_top="@dimen/space_2"
+        app:tl_tab_width="130dp"
+        app:tl_textBold="true"
+        app:tl_textsize="@dimen/text_size_14"/>
+</merge>

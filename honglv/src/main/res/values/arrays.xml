@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="main_arrays">
+        <item>首页</item>
+        <item>番剧</item>
+        <item>专题</item>
+        <item>发现</item>
+        <item>新闻</item>
+    </string-array>
+    <string-array name="week_arrays">
+        <item>周一</item>
+        <item>周二</item>
+        <item>周三</item>
+        <item>周四</item>
+        <item>周五</item>
+        <item>周六</item>
+        <item>周日</item>
+    </string-array>
+</resources>

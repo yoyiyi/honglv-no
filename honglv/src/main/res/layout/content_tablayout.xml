@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <com.flyco.tablayout.SegmentTabLayout
+        android:id="@+id/sliding_tabs"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        app:tl_indicator_color="@color/pink"
+        app:tl_divider_color="@color/pink"
+        app:tl_indicator_height="2dp"
+        app:tl_textBold="true"
+        app:tl_tab_space_equal="true"
+        app:tl_textUnselectColor="@color/font_normal"
+        />
+</merge>

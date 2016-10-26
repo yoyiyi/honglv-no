@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/m_card"
+    android:layout_width="match_parent"
+    android:layout_height="180dp"
+    android:layout_margin="@dimen/space_4"
+    android:elevation="@dimen/space_16"
+    android:orientation="vertical"
+    app:cardCornerRadius="@dimen/space_7"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/space_4">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2">
+
+            <ImageView
+                android:id="@+id/m_cover"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_me"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_24"
+                android:layout_alignParentBottom="true"
+                android:background="@color/pink_alpha_30">
+
+                <TextView
+                    android:id="@+id/m_mupdate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="adfasdf"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_15"/>
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/space_10">
+
+            <com.yoyiyi.honglv.ui.widget.AutoScrollText
+                android:id="@+id/m_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_0"
+                android:drawableLeft="@drawable/img_name"
+                android:ellipsize="marquee"
+                android:gravity="center_vertical"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:singleLine="true"
+                android:text="片名"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_size_15"/>
+
+            <TextView
+                android:id="@+id/m_update"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_5"
+                android:drawableLeft="@drawable/img_novel"
+                android:gravity="center_vertical"
+                android:text="连载"
+                android:textColor="@color/gray"
+
+                android:textSize="@dimen/text_size_15"/>
+
+            <TextView
+                android:id="@+id/m_down"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_5"
+                android:drawableLeft="@drawable/img_down"
+                android:gravity="center_vertical"
+                android:text="下载数"
+                android:textColor="@color/gray"
+
+                android:textSize="@dimen/text_size_15"/>
+
+            <TextView
+                android:id="@+id/m_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_5"
+                android:drawableLeft="@drawable/img_recent"
+                android:gravity="center_vertical"
+                android:text="更新时间"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_size_15"/>
+
+            <TextView
+                android:id="@+id/m_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_5"
+                android:drawableLeft="@drawable/img_americ_eve"
+                android:gravity="center_vertical"
+                android:text="类型"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_size_15"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/m_local"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_5"
+                android:drawableLeft="@drawable/img_master_work"
+                android:gravity="center_vertical"
+                android:text="日本"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_size_15"
+                android:visibility="gone"/>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="@dimen/space_22"
+            android:layout_height="@dimen/space_22"
+            android:src="@drawable/ic_gray_arrow_right"/>
+    </LinearLayout>
+</android.support.v7.widget.CardView>

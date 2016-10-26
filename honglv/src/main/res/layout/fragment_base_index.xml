@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <include layout="@layout/layout_toolbar"/>
+            <include layout="@layout/content_tablayout"/>
+        </android.support.design.widget.AppBarLayout>
+        <FrameLayout
+            android:id="@+id/fl_pnew"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+        <com.yoyiyi.honglv.ui.widget.empty.EmptyLayout
+            android:id="@+id/empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+
+         <net.qiujuer.genius.ui.widget.Loading
+             android:id="@+id/loading"
+             android:layout_width="50dp"
+             android:layout_height="50dp"
+             android:layout_centerInParent="true"
+             android:layout_gravity="center"
+             app:gBackgroundLineSize="@dimen/space_2"
+             app:gForegroundColor="@color/red"
+             app:gProgressStyle="circle"/>
+    </android.support.design.widget.CoordinatorLayout>
+
+
+</FrameLayout>
