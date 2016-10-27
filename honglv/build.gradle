@@ -41,7 +41,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
@@ -89,4 +89,6 @@ dependencies {
     compile 'net.qiujuer.genius:ui:2.0.0-beta8'
     compile 'net.qiujuer.genius:res:2.0.0-beta8'
     compile 'com.miguelcatalan:materialsearchview:1.4.0'
+    compile 'org.jsoup:jsoup:1.10.1'
+    compile files('libs/tbs_sdk_thirdapp_v2.4.0.1073_36840_sharewithdownload_obfs_20161011_194834.jar')
 }

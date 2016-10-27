@@ -27,7 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.yoyiyi.honglv.base.BaseApplication;
-import com.yoyiyi.honglv.ui.activity.BrowserActivity;
+import com.yoyiyi.honglv.ui.activity.TBSBrowerActivity;
 
 import java.io.File;
 import java.util.UUID;
@@ -204,7 +204,7 @@ public class TDevice {
     }
 
     public static void launch(Context context, Bundle bundle) {
-        Intent intent = new Intent(context, BrowserActivity.class);
+        Intent intent = new Intent(context, TBSBrowerActivity.class);
         intent.putExtras(bundle);
         context.startActivity(intent);
     }
@@ -267,7 +267,6 @@ public class TDevice {
             getHandler().post(r);
         }
     }
-
 
 
 }

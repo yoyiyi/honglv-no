@@ -9,6 +9,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
     <application
         android:name=".base.BaseApplication"
@@ -20,6 +21,10 @@
         <meta-data
             android:name="com.yoyiyi.honglv.ui.widget.GlideConfiguration"
             android:value="GlideModule"/>
+        <meta-data
+            android:name="QBSDKAppKey"
+            android:value="Fu5MC2T4Ft++CqJXq3vjVri1"/>
+
         <!-- AppStart-->
         <activity
             android:name=".AppStart"
@@ -51,7 +56,24 @@
         <activity
             android:name=".ui.activity.HotMoreActivity"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.tencent.smtt.sdk.VideoActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:exported="false"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="com.tencent.smtt.tbs.video.PLAY"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.activity.TBSBrowerActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            >
 
+
+        </activity>
     </application>
 
 </manifest>

@@ -25,19 +25,6 @@
             android:layout_centerInParent="true"
             android:layout_gravity="center"
             />
-        <!--
-                <com.yoyiyi.honglv.ui.widget.Loading
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/loading"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"/>-->
 
-
-        <!--   <com.yoyiyi.gaobilibili.ui.widget.empty.EmptyLayout
-               android:id="@+id/empty_layout"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:layout_gravity="center" />-->
     </RelativeLayout>
 </android.support.v4.widget.SwipeRefreshLayout>

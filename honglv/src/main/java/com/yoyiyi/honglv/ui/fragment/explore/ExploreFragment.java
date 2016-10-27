@@ -2,12 +2,20 @@ package com.yoyiyi.honglv.ui.fragment.explore;
 
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
 import com.yoyiyi.honglv.R;
 import com.yoyiyi.honglv.base.BaseFragment;
+import com.yoyiyi.honglv.bean.TypeBean;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 
@@ -17,8 +25,6 @@ import butterknife.BindView;
 public class ExploreFragment extends BaseFragment {
 
     private static final String EXPLORE_INDEX = "explore_index";
- //   @BindView(R.id.toolbar)
- //   Toolbar mToolbar;
     @BindView(R.id.search_back)
     ImageView mSearchBack;
     @BindView(R.id.search_edit)
@@ -27,10 +33,13 @@ public class ExploreFragment extends BaseFragment {
     ImageView mSearchTextClear;
     @BindView(R.id.search_img)
     ImageView mSearchImg;
-   // @BindView(R.id.search_view)
-   // MaterialSearchView mSearchView;
     @BindView(R.id.search_card_view)
     CardView mSearchCardView;
+    @BindView(R.id.recycler)
+    RecyclerView mRecycler;
+
+    private ArrayList<TypeBean> mTypeBean = new ArrayList<>();
+
 
     @Override
     protected int getLayoutId() {
@@ -47,27 +56,58 @@ public class ExploreFragment extends BaseFragment {
     }
 
     @Override
-    protected void initWidget(View root) {
-    //    initSearchView();
+    protected void finishCreateView(Bundle state) {
+        if (!isPrepared) return;
+        loadData();
+        isPrepared = false;
     }
 
-   /* //初始化SearchView
-    protected void initSearchView() {
-        mSearchView.setVoiceSearch(false);
-        mSearchView.setCursorDrawable(R.drawable.custom_cursor);
-        mSearchView.setEllipsize(true);
-       // mSearchView.setSuggestions(getResources().getStringArray(R.array.query_suggestions));
-        mSearchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
+    @Override
+    protected void loadData() {
+        initRecycler();
+    }
 
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
+    @Override
+    protected void initWidget(View root) {
+        //    initSearchView();
+        initTypeBean();
+    }
 
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                return false;
-            }
-        });
-    }*/
+    private void initRecycler() {
+        TypeAdapter typeAdapter = new TypeAdapter(mTypeBean);
+        mRecycler.setLayoutManager(new GridLayoutManager(getActivity(), 3));
+        mRecycler.setAdapter(typeAdapter);
+        typeAdapter.setNewData(mTypeBean);
+
+    }
+
+    private void initTypeBean() {
+        mTypeBean.add(new TypeBean("全部", null, R.drawable.a1));
+        mTypeBean.add(new TypeBean("TV番组", 1, R.drawable.a2));
+        mTypeBean.add(new TypeBean("OVA", 2, R.drawable.a3));
+        mTypeBean.add(new TypeBean("OVD", 3, R.drawable.a4));
+        mTypeBean.add(new TypeBean("剧场版", 4, R.drawable.a5));
+        mTypeBean.add(new TypeBean("特别版", 5, R.drawable.a6));
+        mTypeBean.add(new TypeBean("真人版", 6, R.drawable.a7));
+        mTypeBean.add(new TypeBean("动画版", 7, R.drawable.a8));
+        mTypeBean.add(new TypeBean("其他", 100, R.drawable.a9));
+
+    }
+
+
+    class TypeAdapter extends BaseQuickAdapter<TypeBean> {
+        public TypeAdapter(List<TypeBean> data) {
+            super(R.layout.item_explore, data);
+        }
+
+        @Override
+        protected void convert(BaseViewHolder holder, TypeBean typeBean) {
+            holder.setImageResource(R.id.image, typeBean.getImg())
+                    .setText(R.id.type, typeBean.getName());
+            holder.itemView.setOnClickListener(v -> {
+                //TODO 跳转到查找页面
+
+            });
+        }
+    }
 }
