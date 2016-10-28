@@ -1,9 +1,12 @@
 package com.yoyiyi.honglv.bean;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by yoyiyi on 2016/10/27.
  */
-public class TypeBean {
+public class TypeBean implements Parcelable {
 
     private String name;
     private Integer num;
@@ -38,4 +41,34 @@ public class TypeBean {
     public void setNum(Integer num) {
         this.num = num;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.name);
+        dest.writeValue(this.num);
+        dest.writeInt(this.img);
+    }
+
+    protected TypeBean(Parcel in) {
+        this.name = in.readString();
+        this.num = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.img = in.readInt();
+    }
+
+    public static final Parcelable.Creator<TypeBean> CREATOR = new Parcelable.Creator<TypeBean>() {
+        @Override
+        public TypeBean createFromParcel(Parcel source) {
+            return new TypeBean(source);
+        }
+
+        @Override
+        public TypeBean[] newArray(int size) {
+            return new TypeBean[size];
+        }
+    };
 }

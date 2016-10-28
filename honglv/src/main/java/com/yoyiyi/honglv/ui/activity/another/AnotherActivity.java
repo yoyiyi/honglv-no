@@ -4,11 +4,14 @@ import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 
+import com.orhanobut.logger.Logger;
 import com.yoyiyi.honglv.R;
 import com.yoyiyi.honglv.base.BaseActivity;
 import com.yoyiyi.honglv.ui.fragment.another.rank.RankFragment;
 import com.yoyiyi.honglv.ui.fragment.another.recent.RecentFragment;
 import com.yoyiyi.honglv.ui.fragment.another.week.WeekFragment;
+import com.yoyiyi.honglv.ui.fragment.explore.ResultFragment;
+import com.yoyiyi.honglv.ui.fragment.explore.SearchFragment;
 
 /**
  * Created by yoyiyi on 2016/10/25.
@@ -16,6 +19,7 @@ import com.yoyiyi.honglv.ui.fragment.another.week.WeekFragment;
 public class AnotherActivity extends BaseActivity {
     private String mType;
     private Fragment mFragment;
+    private Intent mIntent;
 
     @Override
     protected int getLayoutId() {
@@ -41,6 +45,16 @@ public class AnotherActivity extends BaseActivity {
             case "RecentFragment":
                 mFragment = RecentFragment.newInstance(mType);
                 break;
+            case "ExploreFragment":
+                mFragment = SearchFragment.newInstance(
+                        mIntent.getIntExtra("num", 0),
+                        mIntent.getStringExtra("title"));
+                break;
+            case "SearchFragment":
+                mFragment = ResultFragment.newInstance(mIntent.getStringExtra("key"));
+                break;
+
+
         }
         final FragmentTransaction trans =
                 getSupportFragmentManager()
@@ -52,8 +66,8 @@ public class AnotherActivity extends BaseActivity {
     }
 
     public void getThisIntent() {
-        Intent intent = getIntent();
-        mType = intent.getStringExtra("type");
+        mIntent = getIntent();
+        mType = mIntent.getStringExtra("type");
     }
 
 

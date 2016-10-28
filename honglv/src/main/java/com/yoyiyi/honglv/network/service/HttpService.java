@@ -9,6 +9,7 @@ import com.yoyiyi.honglv.bean.News;
 import com.yoyiyi.honglv.bean.Ranking;
 import com.yoyiyi.honglv.bean.RecentUpdate;
 import com.yoyiyi.honglv.bean.Recommend;
+import com.yoyiyi.honglv.bean.Search;
 import com.yoyiyi.honglv.bean.TopicDetail;
 import com.yoyiyi.honglv.bean.TopicList;
 import com.yoyiyi.honglv.bean.WeekUpdate;
@@ -81,4 +82,8 @@ public interface HttpService {
 
     @GET("detail")
     Observable<BangumiDetail> getBangumiDetail(@Query("url") String url);
+
+    @GET("search")
+    Observable<Search> getSearchResult(@Query("k") String k);
+
 }

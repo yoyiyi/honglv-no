@@ -52,6 +52,7 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name=".ui.activity.another.AnotherActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".ui.activity.HotMoreActivity"
@@ -82,6 +83,7 @@
             android:configChanges="orientation|screenSize|keyboardHidden"
             >
         </activity>
+        <activity android:name=".ui.activity.DownActivity"/>
 
     </application>
 

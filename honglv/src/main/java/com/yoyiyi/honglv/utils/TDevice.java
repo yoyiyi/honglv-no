@@ -31,6 +31,11 @@ import com.yoyiyi.honglv.ui.activity.BangumiDetailActivity;
 import com.yoyiyi.honglv.ui.activity.NewsDetailActivity;
 import com.yoyiyi.honglv.ui.activity.TBSBrowerActivity;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
 import java.io.File;
 import java.util.UUID;
 
@@ -289,6 +294,16 @@ public class TDevice {
         intent.putExtras(bundle);
         context.startActivity(intent);
 
+    }
+
+    //图片适应屏幕
+    public static String getNewContent(String htmltext) {
+        Document doc = Jsoup.parse(htmltext);
+        Elements elements = doc.getElementsByTag("img");
+        for (Element element : elements) {
+            element.attr("width", "100%").attr("height", "auto");
+        }
+        return doc.toString();
     }
 
 }

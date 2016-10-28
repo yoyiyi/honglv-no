@@ -96,7 +96,7 @@ public class BannerView extends FrameLayout implements BannerAdapter.ViewPagerOn
         if (mPoints.getChildCount() != 0) {
             //清空所有指示器
             mPoints.removeAllViewsInLayout();
-           // mPoints.removeAllViews();
+            // mPoints.removeAllViews();
 
         }
         //初始化与个数相同的指示器点
@@ -119,13 +119,16 @@ public class BannerView extends FrameLayout implements BannerAdapter.ViewPagerOn
         for (int i = 0; i < mCarousels.size(); i++) {
             ImageView mImageView = new ImageView(mContext);
             mImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-            Glide.with(mContext)
-                    .load(mCarousels.get(i).getImg())
-                    //.centerCrop()
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .into(mImageView);
+            if (mCarousels.get(i).getImg() == null) {
+                mImageView.setImageResource(mCarousels.get(i).getImgId());
+           } else {
+                Glide.with(mContext)
+                        .load(mCarousels.get(i).getImg())
+                        //.centerCrop()
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .into(mImageView);
+            }
             iv.add(mImageView);
-
         }
         //监听图片轮播，改变指示器状态
         mViewPager.clearOnPageChangeListeners();
@@ -142,7 +145,7 @@ public class BannerView extends FrameLayout implements BannerAdapter.ViewPagerOn
                 }
                 mPoints.getChildAt(pos).setBackgroundResource(selectRes);
                 mTitle.setText(mCarousels.get(pos).getTitle());
-               // Logger.d(mCarousels.get(pos).getTitle());
+                // Logger.d(mCarousels.get(pos).getTitle());
             }
 
             @Override
@@ -164,7 +167,7 @@ public class BannerView extends FrameLayout implements BannerAdapter.ViewPagerOn
 
         BannerAdapter bannerAdapter = new BannerAdapter(iv);
         mViewPager.setAdapter(bannerAdapter);
-       // mViewPager.setOffscreenPageLimit(3);
+        // mViewPager.setOffscreenPageLimit(3);
         mViewPager.setCurrentItem(5000);
         bannerAdapter.notifyDataSetChanged();
         bannerAdapter.setViewPagerOnItemClickListener(this);
@@ -208,11 +211,15 @@ public class BannerView extends FrameLayout implements BannerAdapter.ViewPagerOn
             position -= 1;
         }
         //设置图片点击事件
-        Bundle bundle = new Bundle();
-        bundle.putString("title", mCarousels.get(position).getTitle());
-        bundle.putString("url", mCarousels.get(position).getUrl());
-        //TDevice.launch( mContext, bundle);
-        TDevice.launchNewsDetail(mContext,bundle);
+        if (mCarousels.get(position).getUrl() == null) {
+
+        } else {
+            Bundle bundle = new Bundle();
+            bundle.putString("title", mCarousels.get(position).getTitle());
+            bundle.putString("url", mCarousels.get(position).getUrl());
+            //TDevice.launch( mContext, bundle);
+            TDevice.launchNewsDetail(mContext, bundle);
+        }
         // BrowserActivity.launch((Activity) context, bannerList.get(position).link, bannerList.get(position).title);
     }
 }

@@ -24,6 +24,7 @@ import com.yoyiyi.honglv.bean.NewDetail;
 import com.yoyiyi.honglv.network.manager.HttpManager;
 import com.yoyiyi.honglv.ui.widget.AutoScrollText;
 import com.yoyiyi.honglv.ui.widget.empty.EmptyLayout;
+import com.yoyiyi.honglv.utils.TDevice;
 
 import net.qiujuer.genius.ui.widget.Loading;
 
@@ -137,6 +138,8 @@ public class NewsDetailActivity extends BaseActivity {
         webSettings.setSupportZoom(true);//支持缩放
         webSettings.setDisplayZoomControls(false);
         webSettings.setAppCacheEnabled(true);
+        webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
+
         //  mWeb.setLayerType();
         mWeb.setDrawingCacheEnabled(true);
         mWeb.getSettings().setBlockNetworkImage(true);
@@ -146,7 +149,8 @@ public class NewsDetailActivity extends BaseActivity {
         mWeb.setWebChromeClient(mWebChromeClient);
         //mWeb.loadUrl(mUrl);
         Logger.d(mDetail.getContent());
-        mWeb.loadData(mDetail.getContent(), "text/html;charset=utf-8", null);
+        // mWeb.loadDataWithBaseURL(null,);
+        mWeb.loadData(TDevice.getNewContent(mDetail.getContent()), "text/html;charset=utf-8", null);
     }
 
     private void initToolbar() {

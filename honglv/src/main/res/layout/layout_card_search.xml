@@ -18,7 +18,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center|start"
         android:padding="@dimen/space_6"
-        android:src="@drawable/ic_arrow_back_black"/>
+        android:src="@drawable/ic_arrow_back_black"
+        android:visibility="gone"/>
 
 
     <EditText
@@ -27,7 +28,8 @@
         android:layout_height="match_parent"
         android:layout_gravity="center|end"
         android:layout_marginEnd="@dimen/space_5"
-        android:layout_marginStart="@dimen/space_5"
+        android:layout_marginLeft="@dimen/space_4"
+        android:layout_marginStart="@dimen/space_15"
         android:background="@color/white"
         android:gravity="center_vertical"
         android:hint="请输入查找内容"
@@ -40,8 +42,8 @@
         android:id="@+id/search_text_clear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center|end"
-        android:layout_marginEnd="@dimen/space_5"
+        android:layout_gravity="center|start"
+        android:layout_marginStart="@dimen/space_5"
         android:src="@drawable/ic_close_black"
         android:visibility="gone"/>
 

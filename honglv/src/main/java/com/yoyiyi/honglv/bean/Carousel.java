@@ -9,32 +9,48 @@ public class Carousel {
      * url : http://www.hltm.tv/new/12.html
      * title : 每个月都来给红旅打赏下吧
      */
-        private String img;
-        private String url;
-        private String title;
+    private String img;
+    private String url;
+    private String title;
 
-        public String getImg() {
-            return img;
-        }
+    public Carousel(String name, int car, String url) {
+        title = name;
+        imgId = car;
+        this.url = url;
+    }
 
-        public void setImg(String img) {
-            this.img = img;
-        }
+    public int getImgId() {
+        return imgId;
+    }
 
-        public String getUrl() {
-            return url;
-        }
+    public void setImgId(int imgId) {
+        this.imgId = imgId;
+    }
 
-        public void setUrl(String url) {
-            this.url = url;
-        }
+    private int imgId;
 
-        public String getTitle() {
-            return title;
-        }
+    public String getImg() {
+        return img;
+    }
 
-        public void setTitle(String title) {
-            this.title = title;
-        }
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
     //}
 }

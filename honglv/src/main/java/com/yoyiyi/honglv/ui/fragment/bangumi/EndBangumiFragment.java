@@ -202,6 +202,7 @@ public class EndBangumiFragment extends BaseFragment implements BaseQuickAdapter
      * 设置文字样式
      */
     private void setTextType() {
+        mTotal.setText("");
         String text = mTotalCount + "";
         mSpannableString = new SpannableString("一共" + text + "部番剧");
         mSpannableString.setSpan(

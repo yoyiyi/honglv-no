@@ -1,10 +1,15 @@
 package com.yoyiyi.honglv.ui.fragment.explore;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -13,6 +18,9 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.yoyiyi.honglv.R;
 import com.yoyiyi.honglv.base.BaseFragment;
 import com.yoyiyi.honglv.bean.TypeBean;
+import com.yoyiyi.honglv.ui.activity.another.AnotherActivity;
+import com.yoyiyi.honglv.utils.KeyBoardUtil;
+import com.yoyiyi.honglv.utils.TDevice;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,12 +73,61 @@ public class ExploreFragment extends BaseFragment {
     @Override
     protected void loadData() {
         initRecycler();
+        initSearchEdit();
     }
 
     @Override
     protected void initWidget(View root) {
         //    initSearchView();
         initTypeBean();
+    }
+
+    private void initSearchEdit() {
+        mSearchEdit.setFocusable(true);
+        mSearchEdit.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                //initEdit();
+                if (count == 0) {
+                    mSearchTextClear.setVisibility(View.GONE);
+                } else {
+                    mSearchTextClear.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        KeyBoardUtil.openKeybord(mSearchEdit, getActivity());
+        mSearchImg.setOnClickListener(v -> onSearch());
+        mSearchTextClear.setOnClickListener(v -> mSearchEdit.setText(""));
+        mSearchEdit.setOnEditorActionListener((v, id, e) -> {
+            //判断输入法按钮  搜索
+            if (id == EditorInfo.IME_ACTION_SEARCH
+                    || id == EditorInfo.IME_ACTION_UNSPECIFIED) {
+                onSearch();
+                return true;
+            }
+            return false;
+        });
+    }
+
+    private void onSearch() {
+        if (TextUtils.isEmpty(mSearchEdit.getText().toString())) {
+            TDevice.showToast("关键词不能为空");
+            return;
+        }
+        Intent intent = new Intent(getActivity(), AnotherActivity.class);
+        intent.putExtra("key", mSearchEdit.getText().toString());
+        intent.putExtra("type", "SearchFragment");
+        startActivity(intent);
     }
 
     private void initRecycler() {
@@ -106,8 +163,18 @@ public class ExploreFragment extends BaseFragment {
                     .setText(R.id.type, typeBean.getName());
             holder.itemView.setOnClickListener(v -> {
                 //TODO 跳转到查找页面
-
+                Intent intent = new Intent(getActivity(), AnotherActivity.class);
+                intent.putExtra("title", typeBean.getName());
+                intent.putExtra("num", typeBean.getNum());
+                intent.putExtra("type", "ExploreFragment");
+                startActivity(intent);
             });
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mSearchEdit.setText("");
     }
 }

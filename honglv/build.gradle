@@ -17,7 +17,7 @@ android {
 
     defaultConfig {
         applicationId "com.yoyiyi.honglv"
-        minSdkVersion 17
+        minSdkVersion 18
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
@@ -66,8 +66,8 @@ dependencies {
     //tabLayout
     compile 'com.flyco.tablayout:FlycoTabLayout_Lib:2.0.0@aar'
     // okhttp
-    compile 'com.squareup.okhttp3:okhttp:3.2.0'
-    compile 'com.squareup.okhttp3:logging-interceptor:3.2.0'
+   // compile 'com.squareup.okhttp3:okhttp:3.2.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
     //Gson
     compile 'com.google.code.gson:gson:2.7'
     //r x java
@@ -84,11 +84,10 @@ dependencies {
     compile 'com.zcw:togglebutton-library:1.0.0'
     //多功能BaseRecyclerViewAdapter
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.3.3'
-    //自动轮播
-    //compile 'com.jude:rollviewpager:1.4.5'
     compile 'net.qiujuer.genius:ui:2.0.0-beta8'
     compile 'net.qiujuer.genius:res:2.0.0-beta8'
     compile 'com.miguelcatalan:materialsearchview:1.4.0'
-    compile 'org.jsoup:jsoup:1.10.1'
     compile files('libs/tbs_sdk_thirdapp_v2.4.0.1073_36840_sharewithdownload_obfs_20161011_194834.jar')
+    compile files('libs/jsoup-1.6.1.jar')
+    compile 'com.liulishuo.filedownloader:library:1.2.2'
 }

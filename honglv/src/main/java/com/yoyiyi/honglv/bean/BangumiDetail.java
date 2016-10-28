@@ -196,7 +196,7 @@ public class BangumiDetail implements Parcelable {
             this.list = list;
         }
 
-        public static class ListBean {
+        public static class ListBean implements Parcelable {
             private String name;
             private String url;
 
@@ -215,6 +215,37 @@ public class BangumiDetail implements Parcelable {
             public void setUrl(String url) {
                 this.url = url;
             }
+
+            @Override
+            public int describeContents() {
+                return 0;
+            }
+
+            @Override
+            public void writeToParcel(Parcel dest, int flags) {
+                dest.writeString(this.name);
+                dest.writeString(this.url);
+            }
+
+            public ListBean() {
+            }
+
+            protected ListBean(Parcel in) {
+                this.name = in.readString();
+                this.url = in.readString();
+            }
+
+            public static final Creator<ListBean> CREATOR = new Creator<ListBean>() {
+                @Override
+                public ListBean createFromParcel(Parcel source) {
+                    return new ListBean(source);
+                }
+
+                @Override
+                public ListBean[] newArray(int size) {
+                    return new ListBean[size];
+                }
+            };
         }
 
         @Override

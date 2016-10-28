@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.orhanobut.logger.Logger;
 import com.yoyiyi.honglv.R;
 import com.yoyiyi.honglv.bean.Ranking;
 import com.yoyiyi.honglv.utils.TDevice;
@@ -27,13 +28,19 @@ public class RankAdapter extends BaseQuickAdapter<Ranking.ListBean> {
         viewHolder.itemView.setOnClickListener(v -> {
             Bundle bundle = new Bundle();
             bundle.putString("title", listBeen.getName());
-            bundle.putString("url", listBeen.getUrl());
+            if (listBeen.getUrl().startsWith("/")) {
+                bundle.putString("url", "http://www.hltm.tv" + listBeen.getUrl());
+                Logger.d("http://www.hltm.tv" + listBeen.getUrl().trim());
+
+            } else {
+                bundle.putString("url", listBeen.getUrl());
+            }
             TDevice.launch(mContext, bundle);
-         //  if (){
-              ////  TDevice.launchBangumiDetail(mContext,bundle);
-         //  }else {
-               // TDevice.launchNewsDetail(mContext,bundle);
-         //  }
+            //  if (){
+            ////  TDevice.launchBangumiDetail(mContext,bundle);
+            //  }else {
+            // TDevice.launchNewsDetail(mContext,bundle);
+            //  }
 
         });
     }

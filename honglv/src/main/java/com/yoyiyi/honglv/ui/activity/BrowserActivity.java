@@ -16,6 +16,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.orhanobut.logger.Logger;
 import com.yoyiyi.honglv.R;
 import com.yoyiyi.honglv.base.BaseActivity;
 
@@ -64,8 +65,8 @@ public class BrowserActivity extends BaseActivity {
         Bundle extras = intent.getExtras();
         if (extras != null) {
             mTitle = extras.getString("title");
-           mUrl = extras.getString("url");
-          mUrl = (String) extras.getSerializable("url");
+            mUrl = extras.getString("url");
+           mUrl = (String) extras.getSerializable("url");
         }
     }
 
@@ -80,6 +81,7 @@ public class BrowserActivity extends BaseActivity {
         //设置缓存
         webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);
         webSettings.setDomStorageEnabled(true);
+        webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
 
         webSettings.setGeolocationEnabled(true);
         //  webSettings.setUseWideViewPort(true);//关键点
@@ -94,7 +96,8 @@ public class BrowserActivity extends BaseActivity {
         mWeb.getSettings().setDefaultTextEncodingName("UTF-8");
         mWeb.setWebChromeClient(mClient);
         mWeb.loadUrl(mUrl);
-        // mWeb.loadUrl("http://www.baidu.com");
+        Logger.d(mUrl);
+     //  mWeb.loadUrl("http://www.hltm.tv/xieemanhua/15340.html");
     }
 
     class WebClient extends WebChromeClient {

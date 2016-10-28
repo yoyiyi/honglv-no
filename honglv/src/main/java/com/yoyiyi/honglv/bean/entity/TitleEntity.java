@@ -10,7 +10,7 @@ public class TitleEntity implements CustomTabEntity {
 
     @Override
     public String getTabTitle() {
-        return null;
+        return this.title;
     }
 
     public TitleEntity(String title) {

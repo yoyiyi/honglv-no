@@ -81,7 +81,8 @@ public class TBSBrowerActivity extends BaseActivity {
         webSettings.setSupportZoom(true);//支持缩放
         webSettings.setDisplayZoomControls(false);
         webSettings.setAppCacheEnabled(true);
-      //  mWeb.setLayerType();
+        webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
+        //  mWeb.setLayerType();
         mWeb.setDrawingCacheEnabled(true);
         mWeb.getSettings().setBlockNetworkImage(true);
         mWeb.setWebViewClient(mWebViewClient);

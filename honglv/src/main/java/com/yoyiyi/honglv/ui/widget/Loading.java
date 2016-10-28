@@ -16,6 +16,7 @@ import butterknife.ButterKnife;
  */
 public class Loading extends RelativeLayout implements View.OnClickListener {
 
+    private static final int TYPE_NOT_DATA = 5;
     @BindView(R.id.c_progress)
     net.qiujuer.genius.ui.widget.Loading mCProgress;
     @BindView(R.id.c_loading)
@@ -74,6 +75,13 @@ public class Loading extends RelativeLayout implements View.OnClickListener {
                 isEnable = false;
                 break;
             case TYPE_NO_DATA:
+                mCurrent = TYPE_ERROR;
+                setMsg("没有更多数据!!");
+                mCProgress.stop();
+                mCProgress.setVisibility(GONE);
+                isEnable = false;
+                break;
+            case TYPE_NOT_DATA:
                 mCurrent = TYPE_ERROR;
                 setMsg("没有更多数据!!");
                 mCProgress.stop();

@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/space_4"
+    android:elevation="@dimen/space_16"
+    android:id="@+id/a_card"
+    app:cardCornerRadius="@dimen/space_4">
+
+<LinearLayout
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:layout_marginLeft="@dimen/space_6"
-              android:orientation="vertical">
+              android:orientation="vertical"
+              android:padding="@dimen/space_10">
 
     <TextView
         android:layout_width="wrap_content"
@@ -18,16 +30,22 @@
         android:orientation="horizontal">
 
         <RadioButton
+            android:id="@+id/wj"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="@dimen/space_6"
             android:background="@drawable/selector_btn_bg"
+            android:button="@null"
             android:text="完结动漫"/>
 
         <RadioButton
+            android:id="@+id/lz"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="@dimen/space_6"
             android:layout_marginStart="@dimen/space_19"
             android:background="@drawable/selector_btn_bg"
+            android:button="@null"
             android:text="连载动漫"/>
 
     </RadioGroup>
@@ -47,17 +65,24 @@
         android:orientation="horizontal">
 
         <RadioButton
+            android:id="@+id/zj"
+            android:padding="@dimen/space_6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/selector_btn_bg"
+            android:button="@null"
             android:text="最新更新"/>
 
         <RadioButton
+            android:id="@+id/rm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="@dimen/space_6"
             android:layout_marginStart="@dimen/space_19"
             android:background="@drawable/selector_btn_bg"
+            android:button="@null"
             android:text="热门播放"/>
 
     </RadioGroup>
 </LinearLayout>
+   </android.support.v7.widget.CardView>

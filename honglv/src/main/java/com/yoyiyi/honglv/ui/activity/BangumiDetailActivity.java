@@ -20,7 +20,6 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
-import com.orhanobut.logger.Logger;
 import com.tencent.smtt.export.external.interfaces.JsResult;
 import com.tencent.smtt.sdk.WebChromeClient;
 import com.tencent.smtt.sdk.WebSettings;
@@ -36,6 +35,7 @@ import com.yoyiyi.honglv.ui.fragment.help.CiliFragment;
 import com.yoyiyi.honglv.ui.fragment.help.FtpFragment;
 import com.yoyiyi.honglv.ui.widget.RecommendText;
 import com.yoyiyi.honglv.ui.widget.empty.EmptyLayout;
+import com.yoyiyi.honglv.utils.TDevice;
 
 import net.qiujuer.genius.ui.widget.Loading;
 
@@ -46,6 +46,8 @@ import butterknife.BindView;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
+import static com.yoyiyi.honglv.R.id.web;
+
 /**
  * Created by yoyiyi on 2016/10/27.
  */
@@ -53,7 +55,7 @@ public class BangumiDetailActivity extends BaseActivity {
 
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
-    @BindView(R.id.web)
+    @BindView(web)
     WebView mWeb;
     @BindView(R.id.title)
     TextView mTitles;
@@ -131,19 +133,17 @@ public class BangumiDetailActivity extends BaseActivity {
         for (int i = 0; i < mDetail.getDownload().size(); i++) {
             if (mDetail.getDownload().size() == 0) return;
             mEntities.add(new TitleEntity(mDetail.getDownload().get(i).getTab()));
-            Logger.d(mDetail.getDownload().get(i).getTab());
-            Logger.d(mDetail.getDownload().size());
-        }
-        if (mDetail.getDownload().size() == 1) {
-            mFragments.add(FtpFragment.newInstance(mDetail.getDownload().get(0)));
-        } else if (mDetail.getDownload().size() == 2) {
-            mFragments.add(FtpFragment.newInstance(mDetail.getDownload().get(0)));
-            mFragments.add(BaiduFragment.newInstance(mDetail.getDownload().get(1)));
-
-        } else if (mDetail.getDownload().size() == 3) {
-            mFragments.add(FtpFragment.newInstance(mDetail.getDownload().get(0)));
-            mFragments.add(BaiduFragment.newInstance(mDetail.getDownload().get(1)));
-            mFragments.add(CiliFragment.newInstance(mDetail.getDownload().get(2)));
+            switch (mDetail.getDownload().get(i).getTab()) {
+                case "FTP下载":
+                    mFragments.add(FtpFragment.newInstance(mDetail.getDownload().get(i)));
+                    break;
+                case "百度网盘下载":
+                    mFragments.add(BaiduFragment.newInstance(mDetail.getDownload().get(i)));
+                    break;
+                case "磁力链接下载":
+                    mFragments.add(CiliFragment.newInstance(mDetail.getDownload().get(i)));
+                    break;
+            }
         }
         mSlidingTabs.setTabData(mEntities, this, R.id.fl_change, mFragments);
     }
@@ -203,7 +203,8 @@ public class BangumiDetailActivity extends BaseActivity {
         //设置缓存
         webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);
         webSettings.setDomStorageEnabled(true);
-
+        //图片太大
+        webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
         webSettings.setGeolocationEnabled(true);
         //  webSettings.setUseWideViewPort(true);//关键点
         //  webSettings.setLoadWithOverviewMode(true);//全屏
@@ -218,8 +219,8 @@ public class BangumiDetailActivity extends BaseActivity {
         mWeb.requestFocus(View.FOCUS_DOWN);
         mWeb.getSettings().setDefaultTextEncodingName("UTF-8");
         mWeb.setWebChromeClient(mWebChromeClient);
-        mWeb.loadData(mDetail.getIntro(), "text/html;charset=utf-8", null);
-
+        mWeb.loadData(TDevice.getNewContent(mDetail.getIntro()), "text/html;charset=utf-8", null);
+      //  mWeb.loadDataWithBaseURL(null, TDevice.getNewContent(mDetail.getIntro()), "text/html", "utf-8", null);
     }
 
     /* mWeb.setOnTouchListener((v, e) -> {
@@ -298,6 +299,16 @@ public class BangumiDetailActivity extends BaseActivity {
             mWeb.loadDataWithBaseURL(null, errorHtml, "text/html", "UTF-8", null);
         }
 
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView webView, String s) {
+
+            //  Intent intent = new Intent(BangumiDetailActivity.this, TBSBrowerActivity.class);
+            //  intent.putExtra("url", s);
+            Bundle bundle = new Bundle();
+            bundle.putString("url", s);
+            TDevice.launch(BangumiDetailActivity.this, bundle);
+            return super.shouldOverrideUrlLoading(webView, s);
+        }
     }
 
     @Override

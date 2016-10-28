@@ -26,27 +26,28 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/space_17"
                 android:text="索引"
-                android:textColor="@color/black"
-                android:textSize="@dimen/text_size_15"/>
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_13"/>
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <ImageButton
+                android:id="@+id/sy"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_marginStart="@dimen/space_20"
+                android:background="@null"
                 android:src="@drawable/arrow"/>
+
+            <Button
+                android:id="@+id/search"
+                android:layout_width="50dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="@dimen/space_10"
+                android:background="@drawable/shape_select"
+                android:text="查询"
+                android:textColor="@color/white"/>
         </LinearLayout>
     </android.support.v7.widget.CardView>
 
-    <!--  <net.qiujuer.genius.ui.widget.Loading
-          android:id="@+id/loading"
-          android:layout_width="50dp"
-          android:layout_height="50dp"
-          android:layout_centerInParent="true"
-          android:layout_gravity="center"
-          app:gBackgroundLineSize="@dimen/space_2"
-          app:gForegroundColor="@color/red"
-          app:gProgressStyle="circle"/>
-  -->
-    <include layout="@layout/fragment_base_recycler"/>
+    <include layout="@layout/layout_recycler"/>
 
 </LinearLayout>

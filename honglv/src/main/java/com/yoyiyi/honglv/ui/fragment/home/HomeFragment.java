@@ -10,6 +10,7 @@ import com.yoyiyi.honglv.R;
 import com.yoyiyi.honglv.base.BaseFragment;
 import com.yoyiyi.honglv.bean.Carousel;
 import com.yoyiyi.honglv.bean.Recommend;
+import com.yoyiyi.honglv.bean.entity.ImageEntity;
 import com.yoyiyi.honglv.network.manager.HttpManager;
 import com.yoyiyi.honglv.ui.adapter.sections.HomeBannerSection;
 import com.yoyiyi.honglv.ui.adapter.sections.HomeRecommendSection;
@@ -64,7 +65,7 @@ public class HomeFragment extends BaseFragment {
     @Override
     protected void finishCreateView(Bundle state) {
         super.finishCreateView(state);
-        Bundle bundle = getArguments();
+        //  Bundle bundle = getArguments();
         //  if (bundle != null) {
         //      mCurIndex = bundle.getInt(HOME_INDEX);
         //  }
@@ -120,8 +121,10 @@ public class HomeFragment extends BaseFragment {
     private void finishTask() {
         setReshing(false);
         mEmpty.setVisibility(View.GONE);
+        if (mBanners == null || mBanners.size() == 0) {
+            mBanners.addAll(ImageEntity.getCarousels());
+        }
         mSectionedAdapter.addSection(new HomeBannerSection(mBanners));
-//        Logger.d(mResult.size());
         for (Recommend rd : mResult) {
             HomeRecommendSection homeRecommendSection =
                     new HomeRecommendSection(getActivity(),
@@ -205,7 +208,8 @@ public class HomeFragment extends BaseFragment {
                         mBanners.clear();
                         if (carousels.size() > 0 && carousels != null) {
                             mBanners.addAll(carousels);
-                        }
+                        } //else {
+                        // }
                         return HttpManager
                                 .getHttpManager()
                                 .getHttpService()
