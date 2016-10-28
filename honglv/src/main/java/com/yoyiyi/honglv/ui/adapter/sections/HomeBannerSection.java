@@ -51,6 +51,9 @@ public class HomeBannerSection extends StatelessSection {
     public void onBindHeaderViewHolder(RecyclerView.ViewHolder holder) {
         BannerViewHolder bannerViewHolder = (BannerViewHolder) holder;
         bannerViewHolder.mBannerView.setDelayTime(5).roll(banners);
+        bannerViewHolder.mBannerView.setOnClickListener(v->{
+
+        });
     }
     static class ItemViewHolder extends RecyclerView.ViewHolder {
         public ItemViewHolder(View itemView) {

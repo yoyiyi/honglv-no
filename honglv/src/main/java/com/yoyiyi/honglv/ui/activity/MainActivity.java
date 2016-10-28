@@ -75,7 +75,7 @@ public class MainActivity extends BaseActivity
     }
 
     private void initToolbar() {
-        mToolbar.setTitle("红旅动漫");
+        mToolbar.setTitle("GUMI动漫");
     }
 
     private void initDrawerlayout() {

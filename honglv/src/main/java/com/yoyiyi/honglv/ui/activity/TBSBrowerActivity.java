@@ -104,7 +104,7 @@ public class TBSBrowerActivity extends BaseActivity {
         if (extras != null) {
             mTitle = extras.getString("title");
             mUrl = extras.getString("url");
-            mUrl = (String) extras.getSerializable("url");
+          // mUrl = (String) extras.getSerializable("url");
         }
     }
 

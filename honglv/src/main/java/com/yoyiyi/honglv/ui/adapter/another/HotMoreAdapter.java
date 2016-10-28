@@ -27,7 +27,8 @@ public class HotMoreAdapter extends BaseQuickAdapter<HotNew.ChildBean.OtherListB
             Bundle bundle = new Bundle();
             bundle.putString("title", bean.getName());
             bundle.putString("url", bean.getUrl());
-            TDevice.launch(mContext, bundle);
+           // TDevice.launch(mContext, bundle);
+            TDevice.launchBangumiDetail(mContext,bundle);
 
         });
 

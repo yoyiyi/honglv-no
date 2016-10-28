@@ -48,7 +48,9 @@ public class TopicDetaiAdapter extends BaseQuickAdapter<TopicDetail.ListBean> {
             Bundle bundle = new Bundle();
             bundle.putString("title", topicDetail.getName());
             bundle.putString("url", topicDetail.getUrl());
-            TDevice.launch(mContext, bundle);
+           // TDevice.launch(mContext, bundle);
+            TDevice.launchBangumiDetail(mContext,bundle);
+
         });
     }
 }

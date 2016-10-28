@@ -40,6 +40,7 @@ public class NewsAdapter extends BaseQuickAdapter<News.ListBean> {
             bundle.putString("title", listBean.getTitle());
             bundle.putString("url", listBean.getUrl());
             TDevice.launch(mContext, bundle);
+           // TDevice.launchNewsDetail(mContext, bundle);
         });
     }
 }

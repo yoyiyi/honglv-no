@@ -211,7 +211,8 @@ public class BannerView extends FrameLayout implements BannerAdapter.ViewPagerOn
         Bundle bundle = new Bundle();
         bundle.putString("title", mCarousels.get(position).getTitle());
         bundle.putString("url", mCarousels.get(position).getUrl());
-        TDevice.launch( mContext, bundle);
+        //TDevice.launch( mContext, bundle);
+        TDevice.launchNewsDetail(mContext,bundle);
         // BrowserActivity.launch((Activity) context, bannerList.get(position).link, bannerList.get(position).title);
     }
 }

@@ -54,6 +54,10 @@ public class EmptyLayout extends LinearLayout {
         this.setVisibility(id);
     }
 
+    public void HideButton() {
+        mEmptyBt.setVisibility(GONE);
+    }
+
     public void setOnClick() {
         mEmptyBt.setOnClickListener(v -> {
             if (mListener != null) {

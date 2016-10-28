@@ -75,7 +75,8 @@ public class HotAdapter extends StatelessSection {
             Bundle bundle = new Bundle();
             bundle.putString("title", mList.get(position).getName());
             bundle.putString("url", mList.get(position).getUrl());
-            TDevice.launch(mContext, bundle);
+            //TDevice.launch(mContext, bundle);
+            TDevice.launchBangumiDetail(mContext,bundle);
             // Logger.d(mList.get(position).getUrl());
         });
     }

@@ -27,7 +27,8 @@ public class WeekUpdataAdapter extends BaseQuickAdapter<WeekUpdate.ListBean> {
             Bundle bundle = new Bundle();
             bundle.putString("title", listBean.getName());
             bundle.putString("url", listBean.getUrl());
-            TDevice.launch(mContext, bundle);
+          //  TDevice.launch(mContext, bundle);
+            TDevice.launchBangumiDetail(mContext,bundle);
 
         });
     }

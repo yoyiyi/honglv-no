@@ -71,9 +71,18 @@
             android:name=".ui.activity.TBSBrowerActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             >
-
-
         </activity>
+        <activity
+            android:name=".ui.activity.BangumiDetailActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            >
+        </activity>
+        <activity
+            android:name=".ui.activity.NewsDetailActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            >
+        </activity>
+
     </application>
 
 </manifest>

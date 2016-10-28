@@ -1,8 +1,10 @@
 package com.yoyiyi.honglv.network.service;
 
 import com.yoyiyi.honglv.bean.AnimaList;
+import com.yoyiyi.honglv.bean.BangumiDetail;
 import com.yoyiyi.honglv.bean.Carousel;
 import com.yoyiyi.honglv.bean.HotNew;
+import com.yoyiyi.honglv.bean.NewDetail;
 import com.yoyiyi.honglv.bean.News;
 import com.yoyiyi.honglv.bean.Ranking;
 import com.yoyiyi.honglv.bean.RecentUpdate;
@@ -72,4 +74,11 @@ public interface HttpService {
 
     @GET("recentUpdate")
     Observable<List<RecentUpdate>> getRecentUpdate();
+
+
+    @GET("newsDetail")
+    Observable<NewDetail> getNewsDetail(@Query("url") String url);
+
+    @GET("detail")
+    Observable<BangumiDetail> getBangumiDetail(@Query("url") String url);
 }

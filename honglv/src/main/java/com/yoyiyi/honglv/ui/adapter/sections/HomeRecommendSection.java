@@ -77,7 +77,9 @@ public class HomeRecommendSection extends StatelessSection {
             Bundle bundle = new Bundle();
             bundle.putString("title", listBean.getName());
             bundle.putString("url", listBean.getUrl());
-            TDevice.launch(mContext, bundle);
+            // TDevice.launch(mContext, bundle);
+            TDevice.launchBangumiDetail(mContext, bundle);
+
         });
 
     }
@@ -97,7 +99,8 @@ public class HomeRecommendSection extends StatelessSection {
             Bundle bundle = new Bundle();
             bundle.putString("title", mTitle);
             bundle.putString("url", mUrl);
-            TDevice.launch(mContext, bundle);
+            //TDevice.launch(mContext, bundle);
+            TDevice.launchBangumiDetail(mContext, bundle);
         });
     }
 

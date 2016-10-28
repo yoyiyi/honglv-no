@@ -29,6 +29,12 @@ public class RankAdapter extends BaseQuickAdapter<Ranking.ListBean> {
             bundle.putString("title", listBeen.getName());
             bundle.putString("url", listBeen.getUrl());
             TDevice.launch(mContext, bundle);
+         //  if (){
+              ////  TDevice.launchBangumiDetail(mContext,bundle);
+         //  }else {
+               // TDevice.launchNewsDetail(mContext,bundle);
+         //  }
+
         });
     }
 }

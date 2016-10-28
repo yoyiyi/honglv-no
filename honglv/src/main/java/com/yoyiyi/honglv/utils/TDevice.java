@@ -27,6 +27,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.yoyiyi.honglv.base.BaseApplication;
+import com.yoyiyi.honglv.ui.activity.BangumiDetailActivity;
+import com.yoyiyi.honglv.ui.activity.NewsDetailActivity;
 import com.yoyiyi.honglv.ui.activity.TBSBrowerActivity;
 
 import java.io.File;
@@ -209,6 +211,12 @@ public class TDevice {
         context.startActivity(intent);
     }
 
+    public static void launchDetail(Context context, Bundle bundle) {
+        Intent intent = new Intent(context, BangumiDetailActivity.class);
+        intent.putExtras(bundle);
+        context.startActivity(intent);
+    }
+
     public static void showMessage(View view, String text) {
         Snackbar.make(view, text, Snackbar.LENGTH_SHORT).show();
     }
@@ -268,5 +276,19 @@ public class TDevice {
         }
     }
 
+
+    public static void launchBangumiDetail(Context context, Bundle bundle) {
+        Intent intent = new Intent(context, BangumiDetailActivity.class);
+        intent.putExtras(bundle);
+        context.startActivity(intent);
+
+    }
+
+    public static void launchNewsDetail(Context context, Bundle bundle) {
+        Intent intent = new Intent(context, NewsDetailActivity.class);
+        intent.putExtras(bundle);
+        context.startActivity(intent);
+
+    }
 
 }
