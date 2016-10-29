@@ -75,15 +75,7 @@ public class SearchFragment extends BaseFragment implements BaseQuickAdapter.Req
         return fragment;
     }
 
-  /*  @OnClick(R.id.sy)
-    public void onClick(View v) {
-        initPopuWindow();
-    }
 
-    @OnClick(R.id.search)
-    public void onSearch(View v) {
-        requestData();
-    }*/
 
     private void initPopuWindow() {
 

@@ -316,7 +316,7 @@ public class TDevice {
         Elements elements = doc.getElementsByTag("img");
         if (elements.size() != 0) {
             for (Element element : elements) {
-                element.attr("width", "100%")/*.attr("height", "100%")*/;
+                element.attr("width", "100%").attr("height", "100%");
             }
         }
         return doc.toString();

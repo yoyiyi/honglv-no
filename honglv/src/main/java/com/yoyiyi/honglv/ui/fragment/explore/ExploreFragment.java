@@ -67,7 +67,7 @@ public class ExploreFragment extends BaseFragment{
     protected void finishCreateView(Bundle state) {
         if (!isPrepared) return;
         loadData();
-
+        mSearchEdit.setOnClickListener(v->KeyBoardUtil.openKeybord(mSearchEdit,getActivity()));
         isPrepared = false;
     }
 
@@ -88,7 +88,6 @@ public class ExploreFragment extends BaseFragment{
         mSearchEdit.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
@@ -109,6 +108,7 @@ public class ExploreFragment extends BaseFragment{
         KeyBoardUtil.openKeybord(mSearchEdit, getActivity());
         mSearchImg.setOnClickListener(v -> onSearch());
         mSearchTextClear.setOnClickListener(v -> mSearchEdit.setText(""));
+        mSearchEdit.setOnClickListener(v->KeyBoardUtil.openKeybord(mSearchEdit,getActivity()));
         mSearchEdit.setOnEditorActionListener((v, id, e) -> {
             //判断输入法按钮  搜索
             if (id == EditorInfo.IME_ACTION_SEARCH

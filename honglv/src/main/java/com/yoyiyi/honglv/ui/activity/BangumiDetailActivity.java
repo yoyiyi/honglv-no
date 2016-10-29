@@ -201,18 +201,24 @@ public class BangumiDetailActivity extends BaseActivity {
         webSettings.setDisplayZoomControls(false);
         webSettings.setAppCacheEnabled(true);
 
-        //webSettings.setLoadWithOverviewMode(true);
-        // webSettings.setUseWideViewPort(true);
+       // webSettings.setLoadWithOverviewMode(true);
+       //  webSettings.setUseWideViewPort(true);
+
+        mWeb.setVerticalScrollBarEnabled(false);
+        mWeb.setVerticalScrollbarOverlay(false);
+        mWeb.setHorizontalScrollBarEnabled(false);
+        mWeb.setHorizontalScrollbarOverlay(false);
         //  mWeb.setLayerType();
         mWeb.setDrawingCacheEnabled(true);
+        mWeb.getSettings().setLoadsImagesAutomatically(false);
         mWeb.getSettings().setBlockNetworkImage(true);
         mWeb.setWebViewClient(mWebViewClient);
         mWeb.requestFocus(View.FOCUS_DOWN);
         mWeb.getSettings().setDefaultTextEncodingName("UTF-8");
         mWeb.setWebChromeClient(mWebChromeClient);
         //  mWeb.loadData(TDevice.getNewContent(mDetail.getIntro()), "text/html;charset=utf-8", null);
-        // mWeb.loadDataWithBaseURL(null, TDevice.getNewContent(mDetail.getIntro()), "text/html", "utf-8", null);
-        mWeb.loadDataWithBaseURL(null, mDetail.getIntro(), "text/html", "utf-8", null);
+       //mWeb.loadDataWithBaseURL(null, TDevice.getNewContent("<style> img {width:100%;}</style>"+mDetail.getIntro()), "text/html", "utf-8", null);
+       mWeb.loadDataWithBaseURL(null, mDetail.getIntro(), "text/html", "utf-8", null);
 
     }
 

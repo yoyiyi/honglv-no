@@ -128,7 +128,7 @@ public class TBSBrowerActivity extends BaseActivity {
 
         @Override
         public void onProgressChanged(WebView webView, int i) {
-            if (i == 80) {
+            if (i == 40) {
                 mProgress.stop();
                 mProgress.setVisibility(View.GONE);
             } else {
