@@ -41,12 +41,12 @@ public class SearchFragment extends BaseFragment implements BaseQuickAdapter.Req
     Toolbar mToolbar;
     @BindView(R.id.recycler)
     RecyclerView mRecycler;
-    @BindView(R.id.loading)
-    Loading mLoading;
     @BindView(R.id.search)
     Button mSearch;
     @BindView(R.id.sy)
     ImageButton mSy;
+    @BindView(R.id.loading)
+    Loading mLoading;
 
     private Integer mVer;
     private Integer mCurrentPage = 1;
@@ -106,7 +106,7 @@ public class SearchFragment extends BaseFragment implements BaseQuickAdapter.Req
     protected void finishCreateView(Bundle state) {
         mVer = getArguments().getInt("ver");
         mTitle = getArguments().getString("title");
-        mLoading.setType(4);
+      //  mLoading.setType(4);
         initToolbar();
         isPrepared = true;
         loadData();
@@ -198,6 +198,7 @@ public class SearchFragment extends BaseFragment implements BaseQuickAdapter.Req
 
     private void showErrorView() {
         mAdapter.loadComplete();
+        mLoading.dismiss();
         Loading error = new Loading(getActivity());
         error.setType(3);
         isLoadingMore = false;
@@ -205,6 +206,7 @@ public class SearchFragment extends BaseFragment implements BaseQuickAdapter.Req
 
     private void showEndView() {
         mAdapter.loadComplete();//请求结束
+        mLoading.dismiss();
         Loading noData = new Loading(getActivity());
         noData.setType(3);
         mAdapter.addFooterView(noData);//设置没有更多数据
@@ -291,4 +293,5 @@ public class SearchFragment extends BaseFragment implements BaseQuickAdapter.Req
                 break;
         }
     }
+
 }

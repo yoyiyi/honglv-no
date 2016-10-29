@@ -4,14 +4,12 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.PixelFormat;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.tencent.smtt.export.external.interfaces.JsResult;
 import com.tencent.smtt.sdk.WebChromeClient;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebView;
@@ -69,7 +67,7 @@ public class TBSBrowerActivity extends BaseActivity {
         //设置js支持
         webSettings.setJavaScriptEnabled(true);
         // 设置支持javascript脚本
-        webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
+        webSettings.setJavaScriptCanOpenWindowsAutomatically(false);
         //设置缓存
         webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);
         webSettings.setDomStorageEnabled(true);
@@ -90,7 +88,12 @@ public class TBSBrowerActivity extends BaseActivity {
         mWeb.getSettings().setDefaultTextEncodingName("UTF-8");
         mWeb.setWebChromeClient(mWebChromeClient);
         mWeb.loadUrl(mUrl);
-
+      /*  mWeb.setOnTouchListener((v, n) -> {
+                    mProgress.setVisibility(View.GONE);
+                    return true;
+                }
+        );
+*/
     }
 
     private void initToolbar() {
@@ -105,7 +108,7 @@ public class TBSBrowerActivity extends BaseActivity {
         if (extras != null) {
             mTitle = extras.getString("title");
             mUrl = extras.getString("url");
-          // mUrl = (String) extras.getSerializable("url");
+            // mUrl = (String) extras.getSerializable("url");
         }
     }
 
@@ -124,6 +127,19 @@ public class TBSBrowerActivity extends BaseActivity {
         }
 
         @Override
+        public void onProgressChanged(WebView webView, int i) {
+            if (i == 80) {
+                mProgress.stop();
+                mProgress.setVisibility(View.GONE);
+            } else {
+                mProgress.setAutoRun(true);
+                mProgress.start();
+                mProgress.setVisibility(View.VISIBLE);
+            }
+            super.onProgressChanged(webView, i);
+        }
+
+      /*  @Override
         public boolean onJsAlert(WebView webView, String s, String s1, JsResult jsResult) {
             AlertDialog.Builder alert = new AlertDialog
                     .Builder(TBSBrowerActivity.this)
@@ -133,8 +149,8 @@ public class TBSBrowerActivity extends BaseActivity {
             alert.setCancelable(false);
             alert.create();
             alert.show();
-            return true;
-        }
+            return false;
+        }*/
     }
 
 
@@ -150,6 +166,11 @@ public class TBSBrowerActivity extends BaseActivity {
             mProgress.stop();
             mProgress.setVisibility(View.GONE);
             mWeb.getSettings().setBlockNetworkImage(false);
+            // int w = mWeb.getView().getWidth();
+            // int h = mWeb.getView().getHeight();
+            int h = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+            int w = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+            mWeb.measure(w, h);
         }
 
         @Override

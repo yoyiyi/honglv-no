@@ -22,10 +22,10 @@
     <group
         android:id="@+id/menu_center"
         android:checkableBehavior="single">
-        <item
+       <!-- <item
             android:id="@+id/nav_down"
             android:icon="@drawable/ic_down"
-            android:title="@string/ic_menu_down"/>
+            android:title="@string/ic_menu_down"/>-->
         <item
             android:id="@+id/nav_hot"
             android:icon="@drawable/ic_nav_hot"

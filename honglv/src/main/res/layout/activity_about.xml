@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center_horizontal"
+              android:orientation="vertical"
+    >
+
+    <include layout="@layout/layout_toolbar"/>
+
+    <com.yoyiyi.honglv.ui.widget.CircleImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/space_6"
+        android:src="@drawable/ic_me"
+        app:border_color="@color/colorPrimary"
+        app:border_width="@dimen/space_2"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/space_5"
+        android:text="yoyiyi"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_15"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/space_5"
+        android:text="邮箱：soleilyoyiyi@163.com"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_15"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/space_5"
+        android:text="QQ邮箱：2455676683@qq.com"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_15"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/space_5"
+        android:text="支付宝：soleilyoyiyi@163.com"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_15"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/space_5"
+        android:text="API提供：朋也 1956587218@qq.com"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_15"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/space_5"
+        android:text="开源地址：https://github.com/yoyiyi/honglv-no"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_15"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/space_5"
+        android:text="界面广告均源于原网站,非本应用内嵌。"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_15"/>
+</LinearLayout>

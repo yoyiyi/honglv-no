@@ -53,7 +53,7 @@ public class BaiduFragment extends BaseFragment {
     private void initAdapter() {
         mAdapter = new BaiduAdapter(new ArrayList<>());
         // LinearLayoutManager manager = new LinearLayoutManager(getActivity());
-        GridLayoutManager manager = new GridLayoutManager(getActivity(), 5);
+        GridLayoutManager manager = new GridLayoutManager(getActivity(), 4);
         mRecycler.setLayoutManager(manager);
         mRecycler.setAdapter(mAdapter);
         mAdapter.setNewData(data.getList());

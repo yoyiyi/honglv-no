@@ -16,7 +16,6 @@ import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 
 import com.flyco.tablayout.SlidingTabLayout;
-import com.miguelcatalan.materialsearchview.MaterialSearchView;
 import com.yoyiyi.honglv.R;
 import com.yoyiyi.honglv.base.BaseActivity;
 import com.yoyiyi.honglv.ui.activity.another.AnotherActivity;
@@ -42,8 +41,6 @@ public class MainActivity extends BaseActivity
     NavigationView mNavView;
     @BindView(R.id.drawer_layout)
     DrawerLayout mDrawerLayout;
-    @BindView(R.id.search_view)
-    MaterialSearchView mSearchView;
     private long mBackPressedTime;
     private ImageView mIv;
 
@@ -61,7 +58,6 @@ public class MainActivity extends BaseActivity
         initDrawerlayout();
         initFragment();
         initNavigationView();
-        initSearchView();
     }
 
     private void initNavigationView() {
@@ -119,7 +115,6 @@ public class MainActivity extends BaseActivity
         menu.clear();
         getMenuInflater().inflate(R.menu.main, menu);
         MenuItem item = menu.findItem(R.id.id_action_search);
-        mSearchView.setMenuItem(item);
         return true;
     }
 
@@ -159,11 +154,14 @@ public class MainActivity extends BaseActivity
             startActivity(intent);
 
         } else if (id == R.id.nav_theme) {
+            TDevice.showToast("功能完善中。。。");
 
         } else if (id == R.id.nav_setting) {
+            TDevice.showToast("功能完善中。。。");
 
         } else if (id == R.id.nav_about) {
-
+            Intent intent = new Intent(this, AboutActivity.class);
+            startActivity(intent);
         }
         mDrawerLayout.closeDrawer(GravityCompat.START);
         return true;
@@ -196,24 +194,5 @@ public class MainActivity extends BaseActivity
 
     }
 
-    //初始化SearchView
-    protected void initSearchView() {
-        mSearchView.setVoiceSearch(false);
-        mSearchView.setCursorDrawable(R.drawable.custom_cursor);
-        mSearchView.setEllipsize(true);
-        // mSearchView.setSuggestions(getResources().getStringArray(R.array.query_suggestions));
-        mSearchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
-
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                return false;
-            }
-        });
-    }
 
 }

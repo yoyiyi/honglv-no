@@ -231,6 +231,20 @@ public class TDevice {
 
     }
 
+    /**
+     * 下载手机迅雷
+     *
+     * @param context
+     * @param pck
+     */
+    public static void gotoMarket(Context context, String pck) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse("market://details?id=" + pck));
+        if (intent.resolveActivity(context.getPackageManager()) != null) {
+            context.startActivity(intent);
+        }
+    }
+
     public static void setTextType(TextView tv, String mTotalCount) {
 
         SpannableString spannableString = new SpannableString("一共" + mTotalCount + "部番剧");
@@ -300,8 +314,10 @@ public class TDevice {
     public static String getNewContent(String htmltext) {
         Document doc = Jsoup.parse(htmltext);
         Elements elements = doc.getElementsByTag("img");
-        for (Element element : elements) {
-            element.attr("width", "100%").attr("height", "auto");
+        if (elements.size() != 0) {
+            for (Element element : elements) {
+                element.attr("width", "100%")/*.attr("height", "100%")*/;
+            }
         }
         return doc.toString();
     }

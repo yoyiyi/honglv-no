@@ -52,7 +52,7 @@ public class CiliFragment extends BaseFragment {
 
     private void initAdapter() {
         mAdapter = new CiliAdapter(new ArrayList<>());
-        GridLayoutManager manager = new GridLayoutManager(getActivity(), 5);
+        GridLayoutManager manager = new GridLayoutManager(getActivity(), 4);
         mRecycler.setLayoutManager(manager);
         mRecycler.setAdapter(mAdapter);
         mAdapter.setNewData(data.getList());

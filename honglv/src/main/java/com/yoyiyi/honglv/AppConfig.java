@@ -1,10 +1,14 @@
 package com.yoyiyi.honglv;
 
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Environment;
 import android.os.StatFs;
+
+import com.yoyiyi.honglv.base.BaseApplication;
 
 import java.io.File;
 
@@ -112,4 +116,18 @@ public class AppConfig {
         return cm.getActiveNetworkInfo();
     }
 
+    public static boolean isPkgInstalled(String pkgName) {
+        PackageInfo packageInfo = null;
+        try {
+            packageInfo = BaseApplication.get_context().getPackageManager().getPackageInfo(pkgName, 0);
+        } catch (PackageManager.NameNotFoundException e) {
+            packageInfo = null;
+            e.printStackTrace();
+        }
+        if (packageInfo == null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 }

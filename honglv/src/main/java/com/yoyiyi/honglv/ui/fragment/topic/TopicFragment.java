@@ -209,4 +209,8 @@ public class TopicFragment extends BaseFragment implements SwipeRefreshLayout.On
         mTotalCount = 0;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
 }

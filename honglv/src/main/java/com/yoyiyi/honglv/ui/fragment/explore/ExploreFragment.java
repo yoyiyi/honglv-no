@@ -30,7 +30,7 @@ import butterknife.BindView;
 /**
  * Created by yoyiyi on 2016/10/19.
  */
-public class ExploreFragment extends BaseFragment {
+public class ExploreFragment extends BaseFragment{
 
     private static final String EXPLORE_INDEX = "explore_index";
     @BindView(R.id.search_back)
@@ -67,6 +67,7 @@ public class ExploreFragment extends BaseFragment {
     protected void finishCreateView(Bundle state) {
         if (!isPrepared) return;
         loadData();
+
         isPrepared = false;
     }
 
@@ -124,6 +125,7 @@ public class ExploreFragment extends BaseFragment {
             TDevice.showToast("关键词不能为空");
             return;
         }
+        KeyBoardUtil.closeKeybord(mSearchEdit, getActivity());
         Intent intent = new Intent(getActivity(), AnotherActivity.class);
         intent.putExtra("key", mSearchEdit.getText().toString());
         intent.putExtra("type", "SearchFragment");
@@ -177,4 +179,5 @@ public class ExploreFragment extends BaseFragment {
         super.onResume();
         mSearchEdit.setText("");
     }
+
 }

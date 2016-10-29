@@ -24,6 +24,8 @@ public class RecommendText extends FrameLayout {
     TextView mName;
     @BindView(R.id.count)
     TextView mCount;
+    @BindView(R.id.url)
+    TextView mUrl;
     private String mTitle;
     private String murl;
     private Context mContext;
@@ -45,17 +47,19 @@ public class RecommendText extends FrameLayout {
         ButterKnife.bind(this, view);
         this.setOnClickListener(v -> {
             Bundle bundle = new Bundle();
-            bundle.putString("title", mTitle);
-            bundle.putString("url", murl);
+            bundle.putString("title", mName.getText().toString());
+            bundle.putString("url", mUrl.getText().toString());
+           // Logger.d(mTitle);
             TDevice.launchBangumiDetail(mContext, bundle);
         });
 
     }
 
-    public void setInfo(String name, String sort, String count) {
+    public void setInfo(String name, String sort, String count, String url) {
         mName.setText(name);
         mSort.setText(sort);
         mCount.setText(count);
+        mUrl.setText(url);
     }
 
     public String setTitle(String name) {

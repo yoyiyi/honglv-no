@@ -6,7 +6,7 @@
               android:orientation="vertical">
 
     <include layout="@layout/layout_toolbar"/>
-
+    <include layout="@layout/fragment_base_recycler"/>
     <net.qiujuer.genius.ui.widget.Loading
         android:id="@+id/loading"
         android:layout_width="50dp"
@@ -16,7 +16,4 @@
         app:gBackgroundLineSize="@dimen/space_2"
         app:gForegroundColor="@color/red"
         app:gProgressStyle="circle"/>
-
-    <include layout="@layout/fragment_base_recycler"/>
-
 </LinearLayout>

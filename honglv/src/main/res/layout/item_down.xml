@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/white"
+              android:orientation="horizontal"
+              android:padding="@dimen/space_8">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <com.yoyiyi.honglv.ui.widget.AutoScrollText
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="番名"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/text_size_15"/>
+
+        <net.qiujuer.genius.ui.widget.Loading
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            app:gBackgroundColor="@color/white"
+            app:gForegroundColor="@color/colorPrimary"
+            app:gProgressStyle="line"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/down"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:background="@drawable/shape_select"
+        android:text="暂停"
+        android:textColor="@color/white"/>
+</LinearLayout>

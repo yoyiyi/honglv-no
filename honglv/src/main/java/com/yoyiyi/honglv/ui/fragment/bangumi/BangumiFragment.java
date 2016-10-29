@@ -75,5 +75,10 @@ public class BangumiFragment extends BaseFragment {
         });
         isPrepared = false;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
 }
 

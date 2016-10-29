@@ -45,7 +45,7 @@ public class HttpManager {
     private static HttpService sApiService;
 
     //设置连接超时的值
-    private static final int TIMEOUT = 15;
+    private static final int TIMEOUT = 20;
 
     private HttpManager() {
         initOkHttpClient();
@@ -98,7 +98,7 @@ public class HttpManager {
                             .addInterceptor(interceptor)
                             .retryOnConnectionFailure(true)
                             .readTimeout(TIMEOUT, TimeUnit.SECONDS)
-                            //.writeTimeout(TIMEOUT, TimeUnit.SECONDS)
+                            .writeTimeout(TIMEOUT, TimeUnit.SECONDS)
                             .connectTimeout(TIMEOUT, TimeUnit.SECONDS)
                             .build();
                 }

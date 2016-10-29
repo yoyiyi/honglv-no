@@ -121,9 +121,8 @@ public class HomeFragment extends BaseFragment {
     private void finishTask() {
         setReshing(false);
         mEmpty.setVisibility(View.GONE);
-        if (mBanners == null || mBanners.size() == 0) {
-            mBanners.addAll(ImageEntity.getCarousels());
-        }
+       // if (mBanners == null || mBanners.size() == 0) {
+       // }
         mSectionedAdapter.addSection(new HomeBannerSection(mBanners));
         for (Recommend rd : mResult) {
             HomeRecommendSection homeRecommendSection =
@@ -208,8 +207,9 @@ public class HomeFragment extends BaseFragment {
                         mBanners.clear();
                         if (carousels.size() > 0 && carousels != null) {
                             mBanners.addAll(carousels);
-                        } //else {
-                        // }
+                        } else {
+                            mBanners.addAll(ImageEntity.getCarousels());
+                        }
                         return HttpManager
                                 .getHttpManager()
                                 .getHttpService()
@@ -232,4 +232,8 @@ public class HomeFragment extends BaseFragment {
                 });
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
 }

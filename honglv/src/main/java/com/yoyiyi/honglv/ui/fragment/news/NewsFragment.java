@@ -257,4 +257,9 @@ public class NewsFragment extends BaseFragment implements BaseQuickAdapter.Reque
         isLoadingMore = true;
         doHttpConnection();
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
 }

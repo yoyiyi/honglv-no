@@ -1,12 +1,16 @@
 package com.yoyiyi.honglv.ui.adapter.help;
 
-import android.app.AlertDialog;
+import android.content.Intent;
+import android.net.Uri;
+import android.support.v7.app.AlertDialog;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.orhanobut.logger.Logger;
+import com.yoyiyi.honglv.AppConfig;
 import com.yoyiyi.honglv.R;
 import com.yoyiyi.honglv.bean.BangumiDetail;
+import com.yoyiyi.honglv.utils.TDevice;
 
 import java.util.List;
 
@@ -24,18 +28,22 @@ public class FtpAdapter extends BaseQuickAdapter<BangumiDetail.DownloadBean.List
     protected void convert(BaseViewHolder holder, BangumiDetail.DownloadBean.ListBean listBean) {
         holder.setText(R.id.help, listBean.getName());
         holder.setOnClickListener(R.id.help, v -> {
-            //TODO 下载界面
-            //弹窗
-            Logger.d(listBean.getName());
-            AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-            builder.setIcon(R.drawable.ic_me);
-            builder.setTitle("是否下载该集");
-            builder.setPositiveButton("是", (dialog, which) -> {
-
-            });
-            builder.setNegativeButton("否", null);
-            builder.show();
-
+            if (!AppConfig.isPkgInstalled("com.xunlei.downloadprovider")) {
+                Logger.d(listBean.getName());
+                AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                builder.setIcon(R.drawable.ic_me);
+                builder.setTitle("主人的手机没有安装X雷");
+                builder.setPositiveButton("先去下X雷", (dia, c) ->
+                        TDevice.gotoMarket(mContext, "com.xunlei.downloadprovider")
+                );
+                builder.setNegativeButton("残忍滴拒绝", null);
+                builder.show();
+               // TDevice.showToast("弹出框点击不会下载X雷，需要手动");
+            }
+            //TODO磁力链接
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(listBean.getUrl()));
+            intent.addCategory("android.intent.category.DEFAULT");
+            mContext.startActivity(intent);
         });
     }
 

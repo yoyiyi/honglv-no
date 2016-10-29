@@ -24,12 +24,16 @@
         <meta-data
             android:name="QBSDKAppKey"
             android:value="Fu5MC2T4Ft++CqJXq3vjVri1"/>
-
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="58137a427666135fa9001bb7"></meta-data>
+        <meta-data android:value="MINGYOU" android:name="UMENG_CHANNEL"/>
         <!-- AppStart-->
         <activity
             android:name=".AppStart"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
+
             android:theme="@style/ColorTranslucentTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -83,7 +87,7 @@
             android:configChanges="orientation|screenSize|keyboardHidden"
             >
         </activity>
-        <activity android:name=".ui.activity.DownActivity"/>
+        <activity android:name=".ui.activity.AboutActivity"/>
 
     </application>
 

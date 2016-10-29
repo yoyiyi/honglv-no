@@ -34,7 +34,7 @@ import rx.schedulers.Schedulers;
  * Created by yoyiyi on 2016/10/25.
  */
 public class RecentFragment extends BaseFragment
-        implements SwipeRefreshLayout.OnRefreshListener, RecyclerView.OnTouchListener {
+        implements /*SwipeRefreshLayout.OnRefreshListener,*/ RecyclerView.OnTouchListener {
 
     private static final String INDEX = "RankFragment_Index";
     @BindView(R.id.toolbar)
@@ -203,13 +203,13 @@ public class RecentFragment extends BaseFragment
 
     }
 
-    //刷新事件
+   /* //刷新事件
     @Override
     public void onRefresh() {
         setReshing(true);
         requestData();
 
-    }
+    }*/
 
     //设置刷新
     public void setReshing(boolean isReshing) {

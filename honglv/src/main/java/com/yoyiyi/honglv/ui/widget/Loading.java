@@ -66,11 +66,11 @@ public class Loading extends RelativeLayout implements View.OnClickListener {
                 mCurrent = TYPE_ERROR;
                 setMsg("发生未知错误!!");
                 isEnable = true;
-               mCProgress.setVisibility(GONE);
+                mCProgress.setVisibility(GONE);
                 break;
             case TYPE_LOADING:
                 mCurrent = TYPE_LOADING;
-                setMsg("正在加载数据...");
+                setMsg("少女祈愿中...");
                 startProgress();
                 isEnable = false;
                 break;
@@ -83,7 +83,7 @@ public class Loading extends RelativeLayout implements View.OnClickListener {
                 break;
             case TYPE_NOT_DATA:
                 mCurrent = TYPE_ERROR;
-                setMsg("没有更多数据!!");
+                setMsg("没有数据!!");
                 mCProgress.stop();
                 mCProgress.setVisibility(GONE);
                 isEnable = false;

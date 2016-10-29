@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.trello.rxlifecycle.components.support.RxFragment;
+import com.yoyiyi.honglv.utils.KeyBoardUtil;
 import com.yoyiyi.honglv.utils.TDevice;
 
 import butterknife.ButterKnife;
@@ -113,4 +114,12 @@ public abstract class BaseFragment extends RxFragment {
 
     protected void loadData() {
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        KeyBoardUtil.HideKeyboard(mRoot);
+    }
+
+
 }

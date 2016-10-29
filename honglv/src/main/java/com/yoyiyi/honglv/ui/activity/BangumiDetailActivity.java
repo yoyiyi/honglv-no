@@ -159,19 +159,7 @@ public class BangumiDetailActivity extends BaseActivity {
             mEditRecommendBean = mDetail.getEditRecommend().get(i);
             RecommendText recommendText = new RecommendText(this);
             recommendText.setInfo(mEditRecommendBean.getName(), mEditRecommendBean.getSort(),
-                    mEditRecommendBean.getCount());
-            // recommendText.setOnClickListener(v ->
-            //        recommendText.setTitleAndUrl(mEditRecommendBean.getName()
-            //                 , mEditRecommendBean.getUrl())
-            // );
-           /* recommendText.setOnItemClickListener(() -> {
-                Bundle bundle = new Bundle();
-                bundle.putString("title", mEditRecommendBean.getName());
-                bundle.putString("url", mEditRecommendBean.getUrl());
-                Logger.d(mEditRecommendBean.getName());
-                TDevice.launchBangumiDetail(this, bundle);
-            });*/
-
+                    mEditRecommendBean.getCount(), mEditRecommendBean.getUrl());
             mRecommend.addView(recommendText);
         }
         Glide.with(this)
@@ -203,7 +191,7 @@ public class BangumiDetailActivity extends BaseActivity {
         //设置缓存
         webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);
         webSettings.setDomStorageEnabled(true);
-        //图片太大
+        //图片太大 没用
         webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
         webSettings.setGeolocationEnabled(true);
         //  webSettings.setUseWideViewPort(true);//关键点
@@ -212,6 +200,9 @@ public class BangumiDetailActivity extends BaseActivity {
         webSettings.setSupportZoom(true);//支持缩放
         webSettings.setDisplayZoomControls(false);
         webSettings.setAppCacheEnabled(true);
+
+        //webSettings.setLoadWithOverviewMode(true);
+        // webSettings.setUseWideViewPort(true);
         //  mWeb.setLayerType();
         mWeb.setDrawingCacheEnabled(true);
         mWeb.getSettings().setBlockNetworkImage(true);
@@ -219,19 +210,12 @@ public class BangumiDetailActivity extends BaseActivity {
         mWeb.requestFocus(View.FOCUS_DOWN);
         mWeb.getSettings().setDefaultTextEncodingName("UTF-8");
         mWeb.setWebChromeClient(mWebChromeClient);
-        mWeb.loadData(TDevice.getNewContent(mDetail.getIntro()), "text/html;charset=utf-8", null);
-      //  mWeb.loadDataWithBaseURL(null, TDevice.getNewContent(mDetail.getIntro()), "text/html", "utf-8", null);
+        //  mWeb.loadData(TDevice.getNewContent(mDetail.getIntro()), "text/html;charset=utf-8", null);
+        // mWeb.loadDataWithBaseURL(null, TDevice.getNewContent(mDetail.getIntro()), "text/html", "utf-8", null);
+        mWeb.loadDataWithBaseURL(null, mDetail.getIntro(), "text/html", "utf-8", null);
+
     }
 
-    /* mWeb.setOnTouchListener((v, e) -> {
-                     ((WebView) v).requestDisallowInterceptTouchEvent(true);
-                     return false;
-                 }
-         );*/
-       /* mWeb.setOnTouchListener((v,e)->{
-            ((com.tencent.smtt.sdk.WebView)v).requestDisallowInterceptTouchEvent(true);
-            return false;
-        });*/
     private void initToolbar() {
         mToolbar.setNavigationIcon(R.drawable.ic_action_navigation_arrow_back_inverted);
         mToolbar.setTitle(TextUtils.isEmpty(mTitle) ? "详情" : mTitle);
@@ -263,6 +247,19 @@ public class BangumiDetailActivity extends BaseActivity {
         }
 
         @Override
+        public void onProgressChanged(WebView webView, int i) {
+            if (i == 100) {
+                mLoading.stop();
+                mLoading.setVisibility(View.GONE);
+            } else {
+                mLoading.setAutoRun(true);
+                mLoading.start();
+                mLoading.setVisibility(View.VISIBLE);
+            }
+            super.onProgressChanged(webView, i);
+        }
+
+        @Override
         public boolean onJsAlert(WebView webView, String s, String s1, JsResult jsResult) {
             AlertDialog.Builder alert = new AlertDialog
                     .Builder(BangumiDetailActivity.this)
@@ -289,6 +286,9 @@ public class BangumiDetailActivity extends BaseActivity {
             mLoading.stop();
             mLoading.setVisibility(View.GONE);
             mWeb.getSettings().setBlockNetworkImage(false);
+            int h = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+            int w = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+            mWeb.measure(w, h);
         }
 
         @Override
@@ -327,14 +327,7 @@ public class BangumiDetailActivity extends BaseActivity {
         mEmpty.setVisibility(View.VISIBLE);
         mEmpty.HideButton();
         mLoading.setVisibility(View.GONE);
-        mEmpty.setEmptyTv("加载错误啦！！");
+        mEmpty.setEmptyTv("没有资源下载！！");
         mEmpty.setEmptyIv(R.drawable.ic_empty_error);
-/*        mEmpty.setOnItemClickLisener(() -> {
-                    mLoading.start();
-                    mLoading.setVisibility(View.VISIBLE);
-                    mEmpty.setVisibility(View.GONE);
-                    requestData();
-                }
-        )*/
     }
 }
