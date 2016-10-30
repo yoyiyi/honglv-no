@@ -8,6 +8,7 @@ import com.yoyiyi.honglv.base.BaseActivity;
 import butterknife.BindView;
 
 /**
+ * 关于我的界面
  * Created by yoyiyi on 2016/10/29.
  */
 public class AboutActivity extends BaseActivity {

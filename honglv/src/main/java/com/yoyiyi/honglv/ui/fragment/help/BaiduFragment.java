@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 
 /**
+ * 百度网盘下载
  * Created by yoyiyi on 2016/10/28.
  */
 public class BaiduFragment extends BaseFragment {

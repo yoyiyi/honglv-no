@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 
 /**
+ * Ftp下载
  * Created by yoyiyi on 2016/10/28.
  */
 public class FtpFragment extends BaseFragment {

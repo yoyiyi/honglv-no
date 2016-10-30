@@ -28,6 +28,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
+ * 查找结果
  * Created by yoyiyi on 2016/10/28.
  */
 public class ResultFragment extends BaseFragment implements BaseQuickAdapter.RequestLoadMoreListener, RecyclerView.OnTouchListener {

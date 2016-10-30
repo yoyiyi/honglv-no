@@ -27,7 +27,9 @@
         <meta-data
             android:name="UMENG_APPKEY"
             android:value="58137a427666135fa9001bb7"></meta-data>
-        <meta-data android:value="MINGYOU" android:name="UMENG_CHANNEL"/>
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="MINGYOU"/>
         <!-- AppStart-->
         <activity
             android:name=".AppStart"
@@ -44,23 +46,29 @@
         <!--首页-->
         <activity
             android:name=".ui.activity.MainActivity"
+            android:configChanges="keyboardHidden"
             android:screenOrientation="portrait"
             android:theme="@style/MainActivityColorTranslucentTheme"/>
         <activity android:name=".ui.activity.BrowserActivity"/>
+        <!--专题-->
         <activity
             android:name=".ui.activity.TopicActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
+        <!--热门-->
         <activity
             android:name=".ui.activity.another.HotActivity"
             android:screenOrientation="portrait"/>
+        <!--左滑动列表 显示界面-->
         <activity
             android:name=".ui.activity.another.AnotherActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
+        <!--热门-->
         <activity
             android:name=".ui.activity.HotMoreActivity"
             android:screenOrientation="portrait"/>
+        <!--播放 未实现-->
         <activity
             android:name="com.tencent.smtt.sdk.VideoActivity"
             android:alwaysRetainTaskState="true"
@@ -72,21 +80,25 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
+        <!--浏览器-->
         <activity
             android:name=".ui.activity.TBSBrowerActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             >
         </activity>
+        <!--番剧详情-->
         <activity
             android:name=".ui.activity.BangumiDetailActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             >
         </activity>
+        <!--新闻详情 API参数错误-->
         <activity
             android:name=".ui.activity.NewsDetailActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             >
         </activity>
+        <!--关于我-->
         <activity android:name=".ui.activity.AboutActivity"/>
 
     </application>

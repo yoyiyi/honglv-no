@@ -25,6 +25,7 @@ import static com.yoyiyi.honglv.R.id.web;
 
 
 /**
+ * 浏览器界面
  * Created by yoyiyi on 2016/10/27.
  */
 public class TBSBrowerActivity extends BaseActivity {

@@ -13,6 +13,7 @@ import com.yoyiyi.honglv.ui.adapter.bangumi.BangumiAdapter;
 import butterknife.BindView;
 
 /**
+ * 番剧
  * Created by yoyiyi on 2016/10/19.
  */
 public class BangumiFragment extends BaseFragment {

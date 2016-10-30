@@ -49,6 +49,7 @@ import rx.schedulers.Schedulers;
 import static com.yoyiyi.honglv.R.id.web;
 
 /**
+ * 番剧详情页面
  * Created by yoyiyi on 2016/10/27.
  */
 public class BangumiDetailActivity extends BaseActivity {

@@ -11,9 +11,10 @@ import com.yoyiyi.honglv.ui.fragment.topic.TopicDetailFragment;
 
 import butterknife.BindView;
 
-;
+
 
 /**
+ * 专题详情界面
  * Created by yoyiyi on 2016/10/23.
  */
 public class TopicActivity extends BaseActivity {

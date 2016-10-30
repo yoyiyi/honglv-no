@@ -32,6 +32,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
+ * 分区
  * Created by yoyiyi on 2016/10/27.
  */
 public class SearchFragment extends BaseFragment implements BaseQuickAdapter.RequestLoadMoreListener

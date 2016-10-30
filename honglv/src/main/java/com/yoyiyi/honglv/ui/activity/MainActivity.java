@@ -28,6 +28,9 @@ import butterknife.BindView;
 
 import static com.yoyiyi.honglv.R.id.toolbar;
 
+/**
+ * 主界面
+ */
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 

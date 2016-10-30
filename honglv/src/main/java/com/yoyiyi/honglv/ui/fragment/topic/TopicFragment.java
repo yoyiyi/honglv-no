@@ -28,6 +28,7 @@ import butterknife.BindView;
 import rx.Subscriber;
 
 /**
+ * 专题
  * Created by yoyiyi on 2016/10/21.
  */
 public class TopicFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener,
