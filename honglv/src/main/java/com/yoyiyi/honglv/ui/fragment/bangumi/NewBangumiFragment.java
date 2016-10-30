@@ -52,7 +52,6 @@ public class NewBangumiFragment extends BaseFragment implements BaseQuickAdapter
     private BangumiPullReshAdapter mAdapter;
     private static int mCurrentPage = 1;//当前页数
     private static int mTotalCount;//总共番剧
-    private static int TOTAL_COUNT_PAGER;//总页数
     private Loading mLoading;
 
     private static boolean isLoadingMore = false;//判断是否在执行加载更多的操作
@@ -121,6 +120,7 @@ public class NewBangumiFragment extends BaseFragment implements BaseQuickAdapter
         Loading error = new Loading(getActivity());
         error.setType(3);
         isLoadingMore = false;
+        mAdapter.setLoadMoreFailedView(error);
     }
 
     //加载数据
@@ -247,7 +247,6 @@ public class NewBangumiFragment extends BaseFragment implements BaseQuickAdapter
         isLoadingMore = false;
         mBangumi.clear();
         mCurrentPage = 1;
-        TOTAL_COUNT_PAGER = 0;
         mTotalCount = 0;
     }
 

@@ -22,6 +22,7 @@ import com.yoyiyi.honglv.bean.AnimaList;
 import com.yoyiyi.honglv.network.manager.HttpManager;
 import com.yoyiyi.honglv.ui.adapter.bangumi.BangumiPullReshAdapter;
 import com.yoyiyi.honglv.ui.widget.Loading;
+import com.yoyiyi.honglv.utils.TDevice;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,11 +79,9 @@ public class SearchFragment extends BaseFragment implements BaseQuickAdapter.Req
 
 
     private void initPopuWindow() {
-
-
         View view = View.inflate(getActivity(), R.layout.layout_popup_window, null);
-        mPopupWindow = new PopupWindow(view, 380,
-                280);
+        mPopupWindow = new PopupWindow(view, (int)TDevice.dp2px(180),
+                (int)TDevice.dp2px(120));
         mType = (RadioGroup) view.findViewById(R.id.type);
         mSort = (RadioGroup) view.findViewById(R.id.sort);
         //  mPopupWindow.setContentView(view);
@@ -221,6 +220,9 @@ public class SearchFragment extends BaseFragment implements BaseQuickAdapter.Req
         mAdapter = new BangumiPullReshAdapter(new ArrayList());
         mRecycler.setAdapter(mAdapter);
         addHeader();
+        Loading loading = new Loading(getContext());
+        loading.setType(4);
+        mAdapter.setLoadingView(loading);
         mAdapter.setOnLoadMoreListener(this);
         mLoading.setOnItemClick(this);
     }

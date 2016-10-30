@@ -88,6 +88,8 @@ public class ExploreFragment extends BaseFragment{
         mSearchEdit.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                KeyBoardUtil.openKeybord(mSearchEdit, getActivity());
+
             }
 
             @Override

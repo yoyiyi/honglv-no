@@ -84,6 +84,6 @@ public interface HttpService {
     Observable<BangumiDetail> getBangumiDetail(@Query("url") String url);
 
     @GET("search")
-    Observable<Search> getSearchResult(@Query("k") String k);
+    Observable<Search> getSearchResult(@Query("k") String k, @Query("page") Integer page);
 
 }
