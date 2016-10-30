@@ -95,9 +95,8 @@ public class BannerView extends FrameLayout implements BannerAdapter.ViewPagerOn
         //判断是否清空指示器
         if (mPoints.getChildCount() != 0) {
             //清空所有指示器
+            mPoints.removeAllViews();
             mPoints.removeAllViewsInLayout();
-            // mPoints.removeAllViews();
-
         }
         //初始化与个数相同的指示器点
         for (int i = 0; i < pointSize; i++) {

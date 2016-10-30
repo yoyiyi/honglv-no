@@ -6,6 +6,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.orhanobut.logger.Logger;
 import com.yoyiyi.honglv.R;
 import com.yoyiyi.honglv.base.BaseFragment;
 import com.yoyiyi.honglv.bean.Carousel;
@@ -30,7 +31,7 @@ import rx.schedulers.Schedulers;
 /**
  * Created by yoyiyi on 2016/10/19.
  */
-public class HomeFragment extends BaseFragment {
+public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener {
 
     private static final String HOME_INDEX = "home_index";
     @BindView(R.id.recycler)
@@ -46,7 +47,6 @@ public class HomeFragment extends BaseFragment {
 
     private List<Carousel> mBanners = new ArrayList<>();
     private List<Recommend> mResult = new ArrayList<>();
-    private List<Recommend.ListBean> mListBeen = new ArrayList<>();
 
 
     @Override
@@ -98,14 +98,10 @@ public class HomeFragment extends BaseFragment {
     private void requestData() {
         setReshing(true);
         mRefresh.post(() -> {
-                    mRefresh.setRefreshing(true);
                     doHttpConnection();
                 }
         );
-        mRefresh.setOnRefreshListener(() -> {
-            clearData();
-            doHttpConnection();
-        });
+
     }
 
     private void clearData() {
@@ -121,9 +117,12 @@ public class HomeFragment extends BaseFragment {
     private void finishTask() {
         setReshing(false);
         mEmpty.setVisibility(View.GONE);
-       // if (mBanners == null || mBanners.size() == 0) {
-       // }
+        // if (mBanners == null && mBanners.size() == 0) {
+        // mSectionedAdapter.removeAllSections();
+        // mSectionedAdapter.addSection(new HomeBannerSection(ImageEntity.getCarousels()));
+        //   } else {
         mSectionedAdapter.addSection(new HomeBannerSection(mBanners));
+        /// }
         for (Recommend rd : mResult) {
             HomeRecommendSection homeRecommendSection =
                     new HomeRecommendSection(getActivity(),
@@ -136,6 +135,8 @@ public class HomeFragment extends BaseFragment {
 
         //加载结束
         mSectionedAdapter.notifyDataSetChanged();
+        mRefresh.setOnRefreshListener(this);
+
 
     }
 
@@ -196,6 +197,7 @@ public class HomeFragment extends BaseFragment {
 
 
     private void doHttpConnection() {
+        mBanners.clear();
         HttpManager
                 .getHttpManager()
                 .getHttpService()
@@ -204,11 +206,13 @@ public class HomeFragment extends BaseFragment {
                 .flatMap(new Func1<List<Carousel>, Observable<List<Recommend>>>() {
                     @Override
                     public Observable<List<Recommend>> call(List<Carousel> carousels) {
-                        mBanners.clear();
+                        // mBanners.clear();
                         if (carousels.size() > 0 && carousels != null) {
                             mBanners.addAll(carousels);
                         } else {
-                            mBanners.addAll(ImageEntity.getCarousels());
+                            mBanners = ImageEntity.getCarousels();
+                          //  mBanners.addAll(ImageEntity.getCarousels());
+                            Logger.d(mBanners.size() + "ssssssss");
                         }
                         return HttpManager
                                 .getHttpManager()
@@ -235,5 +239,11 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
+    }
+
+    @Override
+    public void onRefresh() {
+        clearData();
+        doHttpConnection();
     }
 }
