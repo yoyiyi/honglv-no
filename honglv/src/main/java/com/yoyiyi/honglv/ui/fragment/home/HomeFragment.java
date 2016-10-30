@@ -117,10 +117,6 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
     private void finishTask() {
         setReshing(false);
         mEmpty.setVisibility(View.GONE);
-        // if (mBanners == null && mBanners.size() == 0) {
-        // mSectionedAdapter.removeAllSections();
-        // mSectionedAdapter.addSection(new HomeBannerSection(ImageEntity.getCarousels()));
-        //   } else {
         mSectionedAdapter.addSection(new HomeBannerSection(mBanners));
         /// }
         for (Recommend rd : mResult) {
@@ -162,8 +158,6 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
     public void setReshing(boolean isReshing) {
         this.isReshing = isReshing;
         mRefresh.setRefreshing(isReshing);
-        //设置不能滑动
-        ///setRecycleNoScroll();
     }
 
     private void initRecylcerView() {
@@ -206,12 +200,10 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
                 .flatMap(new Func1<List<Carousel>, Observable<List<Recommend>>>() {
                     @Override
                     public Observable<List<Recommend>> call(List<Carousel> carousels) {
-                        // mBanners.clear();
                         if (carousels.size() > 0 && carousels != null) {
                             mBanners.addAll(carousels);
                         } else {
                             mBanners = ImageEntity.getCarousels();
-                          //  mBanners.addAll(ImageEntity.getCarousels());
                             Logger.d(mBanners.size() + "ssssssss");
                         }
                         return HttpManager
