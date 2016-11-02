@@ -78,7 +78,9 @@ public class SearchFragment extends BaseFragment implements BaseQuickAdapter.Req
     }
 
 
-
+    /**
+     * 初始化popuwindow
+     */
     private void initPopuWindow() {
         View view = View.inflate(getActivity(), R.layout.layout_popup_window, null);
         mPopupWindow = new PopupWindow(view, (int)TDevice.dp2px(180),
@@ -98,15 +100,16 @@ public class SearchFragment extends BaseFragment implements BaseQuickAdapter.Req
     protected void finishCreateView(Bundle state) {
         mVer = getArguments().getInt("ver");
         mTitle = getArguments().getString("title");
-      //  mLoading.setType(4);
         initToolbar();
         isPrepared = true;
         loadData();
     }
 
+    /**
+     * 初始化Toolbar
+     */
     private void initToolbar() {
         mToolbar.setTitle(mTitle);
-//        Logger.d(mTitle);
         mToolbar.setNavigationIcon(R.drawable.ic_action_navigation_arrow_back_inverted);
         mToolbar.setNavigationOnClickListener(v -> getActivity().finish());
     }
@@ -126,6 +129,9 @@ public class SearchFragment extends BaseFragment implements BaseQuickAdapter.Req
 
     }
 
+    /**
+     * 请求数据
+     */
     private void requestData() {
         isReshing = true;
         mRecycler.post(() -> {
@@ -134,9 +140,10 @@ public class SearchFragment extends BaseFragment implements BaseQuickAdapter.Req
         });
     }
 
+    /**
+     * 清除数据
+     */
     private void clearData() {
-        // sort = null;
-        //  tab = null;
         mCurrentPage = 1;
         isLoadingMore = false;
 
@@ -157,7 +164,6 @@ public class SearchFragment extends BaseFragment implements BaseQuickAdapter.Req
                         mAdapter.loadComplete();
                         isLoadingMore = false;
                         finishTask();
-                        //   showEmptyView();
                         Toast.makeText(getActivity(), "没有数据", Toast.LENGTH_LONG).show();
                         return;
                     }
@@ -279,7 +285,6 @@ public class SearchFragment extends BaseFragment implements BaseQuickAdapter.Req
         switch (v.getId()) {
             case R.id.sy:
                 initPopuWindow();
-                Logger.d("popup");
                 break;
 
             case R.id.search:

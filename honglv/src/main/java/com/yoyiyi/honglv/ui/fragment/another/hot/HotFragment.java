@@ -19,6 +19,7 @@ import java.util.List;
 import butterknife.BindView;
 
 /**
+ * 热门
  * Created by yoyiyi on 2016/10/23.
  */
 public class HotFragment extends BaseFragment {
@@ -97,9 +98,6 @@ public class HotFragment extends BaseFragment {
         // mRecycler.setAdapter(mSectionedRecyclerViewAdapter);
     }
 
-    private void clearData() {
-
-    }
 
     @Override
     protected void finishCreateView(Bundle state) {

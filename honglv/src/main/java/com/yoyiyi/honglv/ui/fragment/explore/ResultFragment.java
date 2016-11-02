@@ -46,7 +46,6 @@ public class ResultFragment extends BaseFragment implements BaseQuickAdapter.Req
     private int mTotalCount;
     private SpannableString mSpannableString;
     private boolean isReshing = false;
-    //  private boolean mIsLoadingMore = false;
 
     @Override
     protected int getLayoutId() {
@@ -101,11 +100,14 @@ public class ResultFragment extends BaseFragment implements BaseQuickAdapter.Req
         mAdapter.addHeaderView(view);
         Loading loading = new Loading(getContext());
         loading.setType(4);
-        mAdapter.setLoadingView(loading);
+        mAdapter.setLoadingView(loading);//添加加载加载动画
         //添加动画
         mAdapter.openLoadAnimation(new BaseAnimator());
     }
 
+    /**
+     * 加载更多
+     */
     @Override
     public void onLoadMoreRequested() {
         mCurrentPage++;
@@ -113,11 +115,12 @@ public class ResultFragment extends BaseFragment implements BaseQuickAdapter.Req
         doHttpConnection();
     }
 
+    /**
+     * 请求数据
+     */
     private void requestData() {
         isReshing = true;
-        mRecycler.post(() -> {
-            doHttpConnection();
-        });
+        mRecycler.post(() -> doHttpConnection());
 
 
     }
@@ -144,8 +147,11 @@ public class ResultFragment extends BaseFragment implements BaseQuickAdapter.Req
                 });
     }
 
+    /**
+     *请求出错
+     */
     private void showErrorView() {
-         mAdapter.loadComplete();
+        mAdapter.loadComplete();
         Loading error = new Loading(getActivity());
         error.setType(3);
         mAdapter.setLoadMoreFailedView(error);
@@ -165,10 +171,6 @@ public class ResultFragment extends BaseFragment implements BaseQuickAdapter.Req
         setTextType();
     }
 
-    /*  private void showNodata() {
-          mLoading.setType(5);
-      }
-  */
     private void setTextType() {
         mTotal.setText("");
         String text = mTotalCount + "";

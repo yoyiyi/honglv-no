@@ -31,6 +31,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
+ * 最近更新
  * Created by yoyiyi on 2016/10/25.
  */
 public class RecentFragment extends BaseFragment

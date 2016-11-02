@@ -53,6 +53,9 @@ public class MainActivity extends BaseActivity
 
     }
 
+    /**
+     * 初始化布局
+     */
     @Override
     protected void initWidget() {
         super.initWidget();
@@ -63,6 +66,9 @@ public class MainActivity extends BaseActivity
         initNavigationView();
     }
 
+    /**
+     * 初始化NavigationView
+     */
     private void initNavigationView() {
         // View view = mNavView.inflateHeaderView(R.layout.nav_header_main);
         View view = mNavView.getHeaderView(0);
@@ -73,6 +79,9 @@ public class MainActivity extends BaseActivity
 
     }
 
+    /**
+     * 初始化Toolbar
+     */
     private void initToolbar() {
         mToolbar.setTitle("GUMI动漫");
     }
@@ -112,6 +121,11 @@ public class MainActivity extends BaseActivity
         }
     }
 
+    /**
+     * 菜单事件
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -133,6 +147,11 @@ public class MainActivity extends BaseActivity
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * 侧滑面板监听事件
+     * @param item
+     * @return
+     */
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -170,6 +189,12 @@ public class MainActivity extends BaseActivity
         return true;
     }
 
+    /**
+     * 监听事件
+     * @param keyCode
+     * @param event
+     * @return
+     */
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
@@ -182,6 +207,9 @@ public class MainActivity extends BaseActivity
         return true;
     }
 
+    /**
+     * 双击退出应用
+     */
     public void exitApp() {
         //获取当前时间
         long curTime = SystemClock.uptimeMillis();

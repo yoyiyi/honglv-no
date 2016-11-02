@@ -12,6 +12,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
+ * 自定义加载
  * Created by yoyiyi on 2016/10/21.
  */
 public class Loading extends RelativeLayout implements View.OnClickListener {

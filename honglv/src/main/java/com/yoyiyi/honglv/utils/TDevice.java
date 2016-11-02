@@ -40,7 +40,7 @@ import java.io.File;
 import java.util.UUID;
 
 /**
- *
+ *全局工具类
  */
 public class TDevice {
 

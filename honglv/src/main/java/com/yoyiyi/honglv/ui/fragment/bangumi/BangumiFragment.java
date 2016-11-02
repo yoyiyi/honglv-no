@@ -58,10 +58,12 @@ public class BangumiFragment extends BaseFragment {
     @Override
     protected void loadData() {
         if (!isPrepared || !isVisible) return;
+        //初始化适配器
         new BangumiAdapter(getActivity().getSupportFragmentManager(), mStlBangumi, mVpBangumi);
         mStlBangumi.showDot(0);
         mStlBangumi.showDot(1);
         mStlBangumi.setCurrentTab(0);
+        //导航栏监听事件
         mStlBangumi.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelect(int position) {

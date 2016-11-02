@@ -6,8 +6,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 /**
-
- *
+ *键盘工具类
  */
 public class KeyBoardUtil {
 

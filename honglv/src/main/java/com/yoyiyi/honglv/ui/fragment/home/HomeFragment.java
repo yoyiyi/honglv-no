@@ -6,7 +6,6 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.orhanobut.logger.Logger;
 import com.yoyiyi.honglv.R;
 import com.yoyiyi.honglv.base.BaseFragment;
 import com.yoyiyi.honglv.bean.Carousel;
@@ -66,10 +65,6 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
     @Override
     protected void finishCreateView(Bundle state) {
         super.finishCreateView(state);
-        //  Bundle bundle = getArguments();
-        //  if (bundle != null) {
-        //      mCurIndex = bundle.getInt(HOME_INDEX);
-        //  }
         isPrepared = true;
         loadData();
     }
@@ -201,11 +196,11 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
                 .flatMap(new Func1<List<Carousel>, Observable<List<Recommend>>>() {
                     @Override
                     public Observable<List<Recommend>> call(List<Carousel> carousels) {
+                       //首页轮播原网站已经没有了 使用假数据
                         if (carousels.size() > 0 && carousels != null) {
                             mBanners.addAll(carousels);
                         } else {
                             mBanners = ImageEntity.getCarousels();
-                            Logger.d(mBanners.size() + "ssssssss");
                         }
                         return HttpManager
                                 .getHttpManager()
@@ -224,7 +219,6 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
 
                     finishTask();
                 }, e -> {
-                    //  Logger.e("请求失败", "");
                     showEmptyView();
                 });
     }

@@ -84,6 +84,9 @@ public class ExploreFragment extends BaseFragment{
         initTypeBean();
     }
 
+    /**
+     * 初始化查找框
+     */
     private void initSearchEdit() {
      //   mSearchEdit.setFocusable(true);
         mSearchEdit.addTextChangedListener(new TextWatcher() {

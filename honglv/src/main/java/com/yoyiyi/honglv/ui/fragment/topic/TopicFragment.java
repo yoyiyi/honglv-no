@@ -51,7 +51,6 @@ public class TopicFragment extends BaseFragment implements SwipeRefreshLayout.On
 
     @Override
     protected int getLayoutId() {
-//        Logger.d("onCreateView");
         return R.layout.fragment_base_recycler;
 
     }

@@ -7,6 +7,7 @@ import com.yoyiyi.honglv.base.BaseApplication;
 
 
 /**
+ * SharedPreferences工具类
  * Created by yoyiyi on 2016/10/16.
  */
 public class PreferenceUtil {

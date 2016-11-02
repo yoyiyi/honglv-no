@@ -45,8 +45,6 @@ public class EndBangumiFragment extends BaseFragment implements BaseQuickAdapter
     @BindView(R.id.refresh)
     SwipeRefreshLayout mRefresh;
     TextView mTotal;
-    // @BindView(R.id.loading)
-    // Loading mLoading;
     private boolean isReshing = false;
     private boolean isPrepared = false;
     private List<AnimaList.ListBean> mBangumi = new ArrayList<>();
