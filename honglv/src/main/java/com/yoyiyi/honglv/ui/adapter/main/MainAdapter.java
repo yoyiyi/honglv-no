@@ -46,6 +46,7 @@ public class MainAdapter extends FragmentPagerAdapter {
         info.add(new ViewPagerInfo(2, "专题", TopicFragment.newInstance(2)));
         info.add(new ViewPagerInfo(3, "发现", ExploreFragment.newInstance(3)));
         info.add(new ViewPagerInfo(4, "新闻", NewsFragment.newInstance(4)));
+     //    info.add(new ViewPagerInfo(4, "新闻", NewsAnotherFragment.newInstance(4)));
 
     }
 

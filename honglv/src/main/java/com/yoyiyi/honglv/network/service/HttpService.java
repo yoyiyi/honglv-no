@@ -13,10 +13,13 @@ import com.yoyiyi.honglv.bean.Search;
 import com.yoyiyi.honglv.bean.TopicDetail;
 import com.yoyiyi.honglv.bean.TopicList;
 import com.yoyiyi.honglv.bean.WeekUpdate;
+import com.yoyiyi.honglv.bean.Zhihu;
+import com.yoyiyi.honglv.bean.ZhihuNewsDetail;
 
 import java.util.List;
 
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 import rx.Observable;
 
@@ -86,4 +89,12 @@ public interface HttpService {
     @GET("search")
     Observable<Search> getSearchResult(@Query("k") String k, @Query("page") Integer page);
 
+    @GET("http://news-at.zhihu.com/api/4/stories/latest")
+    Observable<Zhihu> getNews();
+
+    @GET()
+    Observable<List<String>> getCss(@Path("path") String path);
+
+    @GET("http://news-at.zhihu.com/api/4/story/{id}")
+    Observable<ZhihuNewsDetail> getNewsDetail(@Path("id") int id);
 }

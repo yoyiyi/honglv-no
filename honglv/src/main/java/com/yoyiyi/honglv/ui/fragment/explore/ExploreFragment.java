@@ -68,7 +68,7 @@ public class ExploreFragment extends BaseFragment{
     protected void finishCreateView(Bundle state) {
         if (!isPrepared) return;
         loadData();
-        mSearchEdit.setOnClickListener(v->KeyBoardUtil.openKeybord(mSearchEdit,getActivity()));
+       // mSearchEdit.setOnClickListener(v->KeyBoardUtil.openKeybord(mSearchEdit,getActivity()));
         isPrepared = false;
     }
 
@@ -85,12 +85,10 @@ public class ExploreFragment extends BaseFragment{
     }
 
     private void initSearchEdit() {
-        mSearchEdit.setFocusable(true);
+     //   mSearchEdit.setFocusable(true);
         mSearchEdit.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                KeyBoardUtil.openKeybord(mSearchEdit, getActivity());
-
             }
 
             @Override
@@ -108,7 +106,7 @@ public class ExploreFragment extends BaseFragment{
 
             }
         });
-        KeyBoardUtil.openKeybord(mSearchEdit, getActivity());
+        KeyBoardUtil.closeKeybord(mSearchEdit, getActivity());
         mSearchImg.setOnClickListener(v -> onSearch());
         mSearchTextClear.setOnClickListener(v -> mSearchEdit.setText(""));
         mSearchEdit.setOnClickListener(v->KeyBoardUtil.openKeybord(mSearchEdit,getActivity()));
@@ -183,4 +181,9 @@ public class ExploreFragment extends BaseFragment{
         mSearchEdit.setText("");
     }
 
+    @Override
+    public void onPause() {
+        KeyBoardUtil.closeKeybord(mSearchEdit,getActivity());
+        super.onPause();
+    }
 }

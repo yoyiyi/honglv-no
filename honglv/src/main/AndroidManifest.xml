@@ -99,8 +99,12 @@
             >
         </activity>
         <!--关于我-->
-        <activity android:name=".ui.activity.AboutActivity"/>
-
+        <activity
+            android:name=".ui.activity.AboutActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activity.another.NewsAnotherActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
