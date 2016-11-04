@@ -34,6 +34,7 @@
         android:gravity="center_vertical"
         android:clickable="true"
         android:hint="请输入查找内容"
+        android:imeOptions="actionSearch"
         android:singleLine="true"
         android:textColor="@color/font_normal"/>
 

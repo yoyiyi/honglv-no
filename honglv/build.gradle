@@ -91,4 +91,5 @@ dependencies {
     compile files('libs/jsoup-1.6.1.jar')
    // compile 'com.liulishuo.filedownloader:library:1.2.2'
     compile 'com.umeng.analytics:analytics:latest.integration'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha8'
 }
